@@ -1,6 +1,8 @@
 package org.solvd.atm.utils;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
 
 public class Denominator {
 
@@ -24,7 +26,7 @@ public class Denominator {
      *                      the current ATM in use.
      * @return  An enumMap containing the upper limits used for calculations in withdraw-breakdown
      */
-    public EnumMap<DollarDenomination, Integer> upperBounds(
+    private EnumMap<DollarDenomination, Integer> upperBounds(
             EnumMap<DollarDenomination, Integer> AtmBillMap){
 
         // Return object (EnumMap) declaration
@@ -45,7 +47,72 @@ public class Denominator {
         return ret;
     }
 
+    /**
+     * Method to generate all possible Map combinations of DollarDenomination and their amounts
+     * required to sum up to the target amount.
+     *
+     * @param targetAmount  the target dollar amount to reach with combinations
+     * @param atmBillMap    the map holding the amount of bills per bill-type within the current ATM in use
+     * @return a list of EnumMap combinations summing up to the targetAmount
+     */
+    public List<EnumMap<DollarDenomination, Integer>> generateCombinations(
+            int targetAmount, EnumMap<DollarDenomination, Integer> atmBillMap) {
 
+        //  Return list for the function
+        List<EnumMap<DollarDenomination, Integer>> combinations = new ArrayList<>();
+        //  Stores the values from the enum
+        DollarDenomination[] denominations = DollarDenomination.values();
+
+        //  Use upperBounds to get the max limits for each denomination
+        EnumMap<DollarDenomination, Integer> atmBillLimits = upperBounds(atmBillMap);
+        int[] limits = new int[denominations.length];
+        // Initialize limits based on atmBillLimits obtained from upperBounds
+        for (int i = 0; i < denominations.length; i++) {
+            limits[i] = atmBillLimits.getOrDefault(denominations[i], 0);
+        }
+
+
+        // Initialize counters for each denomination starting at 0
+        int[] counts = new int[denominations.length];
+
+        //  Iterate for every possible combination
+        boolean keep_iterating = true;
+        while (keep_iterating) {
+            // Calculate the total amount for the current combination
+            int totalAmount = 0;
+            for (int i = 0; i < denominations.length; i++) {
+                totalAmount += counts[i] * denominations[i].getValue();
+            }
+
+            // Check if the current combination matches the target amount
+            if (totalAmount == targetAmount) {
+                EnumMap<DollarDenomination, Integer> combination = new EnumMap<>(DollarDenomination.class);
+                for (int i = 0; i < denominations.length; i++) {
+                    combination.put(denominations[i], counts[i]);
+                }
+                combinations.add(combination);
+            }
+
+            // Increment counters and handle overflow for each denomination
+            int i = 0;
+            while (i < denominations.length) {
+                counts[i]++;
+                if (counts[i] <= limits[i]) {
+                    break;
+                } else {
+                    counts[i] = 0; // Reset current counter and carry over
+                    i++;
+                }
+            }
+
+            // If we've exhausted all combinations, exit the loop
+            if (i == denominations.length) {
+                keep_iterating = false;
+            }
+        }
+
+        return combinations;
+    }
 
 
 
