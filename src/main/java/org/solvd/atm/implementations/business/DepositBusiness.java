@@ -59,7 +59,12 @@ public class DepositBusiness implements IDepositBusiness {
                 throw new BusinessException("Account does not support deposits in " + currency);
             }
 
-            return depositService.deposit(accountSession.getNumber(), convertedAmount, currency, this.atm);
+            DepositDTO depositDTO = depositService.deposit(accountSession.getNumber(), convertedAmount, currency);
+            if(depositDTO != null){
+                updateATMInventory(denomination);
+            }
+            return depositDTO;
+
         } catch (Exception e) {
             logger.error("Error processing deposit for account {}: {}",
                     accountSession.getNumber(), e.getMessage());
@@ -129,5 +134,16 @@ public class DepositBusiness implements IDepositBusiness {
         if (this.atm == null) {
             throw new BusinessException("No ATM selected for deposit operation");
         }
+    }
+
+    private void updateATMInventory(Map<DollarDenomination, Integer> depositedDenominations) {
+        Map<DollarDenomination, Integer> atmInventory = this.atm.getMoney();
+
+        depositedDenominations.forEach((denomination, count) -> {
+            int currentCount = atmInventory.getOrDefault(denomination, 0);
+            atmInventory.put(denomination, currentCount + count);
+        });
+
+        logger.info("Updated ATM inventory after the deposit");
     }
 }

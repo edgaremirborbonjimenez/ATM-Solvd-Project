@@ -4,5 +4,5 @@ import org.solvd.atm.domain.ATM;
 import org.solvd.atm.dtos.DepositDTO;
 
 public interface IDepositService {
-    DepositDTO deposit(String accountNumber, Double amount, String currency, ATM atm);
+    DepositDTO deposit(String accountNumber, Double amount, String currency);
 }
