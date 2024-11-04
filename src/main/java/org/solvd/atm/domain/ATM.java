@@ -1,12 +1,14 @@
 package org.solvd.atm.domain;
 
+import org.solvd.atm.utils.DollarDenomination;
+
 import java.util.List;
 import java.util.Map;
 
 public class ATM {
     private Integer id;
     private String serieNumber;
-    private Map<Integer,Integer> money;
+    private Map<DollarDenomination,Integer> money;
     private List<Transaction> transactions;
     private Currency currency;
 
@@ -28,11 +30,11 @@ public class ATM {
         this.serieNumber = serieNumber;
     }
 
-    public Map<Integer, Integer> getMoney() {
+    public Map<DollarDenomination, Integer> getMoney() {
         return money;
     }
 
-    public void setMoney(Map<Integer, Integer> money) {
+    public void setMoney(Map<DollarDenomination, Integer> money) {
         this.money = money;
     }
 
