@@ -2,6 +2,7 @@ package org.solvd.atm.implementations.businessobject;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.solvd.atm.domain.Account;
 import org.solvd.atm.domain.Deposit;
 import org.solvd.atm.dtos.AccountDTO;
 import org.solvd.atm.dtos.DepositDTO;
@@ -28,13 +29,8 @@ public class DepositService implements IDepositService {
     public DepositDTO deposit(String accountNumber, Double amount, String currency) {
 
         try{
-            if (!currencyService.validateAccountCurrencyBalance(accountNumber, amount, currency)) {
-                throw new BusinessException("Invalid deposit amount for account currency balance " + currency);
-            }
             Deposit depositResult = depositDAO.deposit(accountNumber, amount, currency);
-
             return mapToDepositDTO(depositResult);
-
         } catch (Exception e) {
             logger.error("Error processing deposit - Account: {}, Amount: {}, Currency: {}",
                     accountNumber, amount, currency, e);
@@ -47,12 +43,12 @@ public class DepositService implements IDepositService {
             return null;
         }
 
-        String accountNumber = deposit.getReferenceNumber();
+        Account account = deposit.getOrigin();
         AccountDTO accountDTO = new AccountDTO();
         DepositDTO depositDTO = new DepositDTO();
 
-        accountDTO.setNumber(accountNumber);
-        accountDTO.setCurrencies(currencyService.getAccountCurrenciesBalanceByAccountNum(accountNumber));
+        accountDTO.setNumber(account.getNumber());
+        accountDTO.setCurrencies(currencyService.getAccountCurrenciesBalanceByAccountNum(account.getNumber()));
 
         depositDTO.setOriginAccount(accountDTO);
         depositDTO.setReferenceNumber(deposit.getReferenceNumber());
