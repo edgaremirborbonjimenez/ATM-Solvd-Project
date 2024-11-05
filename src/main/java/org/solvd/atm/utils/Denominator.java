@@ -8,27 +8,27 @@ import java.util.Map;
 public class Denominator {
 
     // Upper caps for money construction. I will modify these values until they're reasonable
-    private final int DEFAULT_LIMIT_$1 = 5; //  Up to 5 dollars in 1-dollar bills
-    private final int DEFAULT_LIMIT_$2 = 5; //  Up to 10 dollars in 2-dollar bills
-    private final int DEFAULT_LIMIT_$5 = 5; //  Up to 25 dollars in 5-dollar bills
-    private final int DEFAULT_LIMIT_$10 = 5;//  Up to 50 dollars in 10-dollar bills
-    private final int DEFAULT_LIMIT_$20 = 10;//  Up to 200 dollars in 20-dollar bills
-    private final int DEFAULT_LIMIT_$50 = 20;//  Up to 1000 dollars in 50-dollar bills
-    private final int DEFAULT_LIMIT_$100 = 30; // Up to 3000 dollars in 100-dollar bills
+    private static final int DEFAULT_LIMIT_$1 = 5; //  Up to 5 dollars in 1-dollar bills
+    private static final int DEFAULT_LIMIT_$2 = 5; //  Up to 10 dollars in 2-dollar bills
+    private static final int DEFAULT_LIMIT_$5 = 5; //  Up to 25 dollars in 5-dollar bills
+    private static final int DEFAULT_LIMIT_$10 = 5;//  Up to 50 dollars in 10-dollar bills
+    private static final int DEFAULT_LIMIT_$20 = 10;//  Up to 200 dollars in 20-dollar bills
+    private static final int DEFAULT_LIMIT_$50 = 20;//  Up to 1000 dollars in 50-dollar bills
+    private static final int DEFAULT_LIMIT_$100 = 30; // Up to 3000 dollars in 100-dollar bills
 
     //  Array to easily handle the limits defined above. Used this way to conveniently modify
     //  each specific limit per denomination
-    private final int[] DEFAULT_LIMITS = { DEFAULT_LIMIT_$1, DEFAULT_LIMIT_$2, DEFAULT_LIMIT_$5,
+    private static final int[] DEFAULT_LIMITS = { DEFAULT_LIMIT_$1, DEFAULT_LIMIT_$2, DEFAULT_LIMIT_$5,
             DEFAULT_LIMIT_$10, DEFAULT_LIMIT_$20, DEFAULT_LIMIT_$50, DEFAULT_LIMIT_$100};
 
     /**
      * Method that returns the upper bound limits for withdraw-breakdown
-     * @param AtmBillMap    , the map holding the amount of bills per bill-type within
+     * @param atmBillMap    , the map holding the amount of bills per bill-type within
      *                      the current ATM in use.
      * @return  An enumMap containing the upper limits used for calculations in withdraw-breakdown
      */
-    private EnumMap<DollarDenomination, Integer> upperBounds(
-            EnumMap<DollarDenomination, Integer> AtmBillMap){
+    private static EnumMap<DollarDenomination, Integer> upperBounds(
+            EnumMap<DollarDenomination, Integer> atmBillMap){
 
         // Return object (EnumMap) declaration
         EnumMap<DollarDenomination, Integer> ret = new EnumMap<>(DollarDenomination.class);
@@ -43,7 +43,7 @@ public class Denominator {
         for(int i=0; i<enumKeys.length; i++){
             ret.put(enumKeys[i],
                     Math.min(DEFAULT_LIMITS[i],
-                            AtmBillMap.getOrDefault(enumKeys[i], 0)));
+                            atmBillMap.getOrDefault(enumKeys[i], 0)));
         }
         return ret;
     }
@@ -56,7 +56,7 @@ public class Denominator {
      * @param atmBillMap    the map holding the amount of bills per bill-type within the current ATM in use
      * @return a list of EnumMap combinations summing up to the targetAmount
      */
-    public List<EnumMap<DollarDenomination, Integer>> generateCombinations(
+    public static List<EnumMap<DollarDenomination, Integer>> generateCombinations(
             int targetAmount, EnumMap<DollarDenomination, Integer> atmBillMap) {
 
         //  Return list for the function
@@ -117,7 +117,6 @@ public class Denominator {
                 keep_iterating = false;
             }
         }
-
         return combinations;
     }
 
