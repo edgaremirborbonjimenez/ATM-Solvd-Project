@@ -8,13 +8,13 @@ import java.util.Map;
 public class Denominator {
 
     // Upper caps for money construction. I will modify these values until they're reasonable
-    private final int DEFAULT_LIMIT_$1 = 4; //  Up to 4 dollars in 1-dollar bills
-    private final int DEFAULT_LIMIT_$2 = 4; //  Up to 8 dollars in 2-dollar bills
-    private final int DEFAULT_LIMIT_$5 = 4; //  Up to 20 dollars in 5-dollar bills
-    private final int DEFAULT_LIMIT_$10 = 4;//  Up to 40 dollars in 10-dollar bills
-    private final int DEFAULT_LIMIT_$20 = 4;//  Up to 80 dollars in 20-dollar bills
-    private final int DEFAULT_LIMIT_$50 = 9;//  Up to 450 dollars in 50-dollar bills
-    private final int DEFAULT_LIMIT_$100 = 20; // Up to 2000 dollars in 100-dollar bills
+    private final int DEFAULT_LIMIT_$1 = 5; //  Up to 5 dollars in 1-dollar bills
+    private final int DEFAULT_LIMIT_$2 = 5; //  Up to 10 dollars in 2-dollar bills
+    private final int DEFAULT_LIMIT_$5 = 5; //  Up to 25 dollars in 5-dollar bills
+    private final int DEFAULT_LIMIT_$10 = 5;//  Up to 50 dollars in 10-dollar bills
+    private final int DEFAULT_LIMIT_$20 = 10;//  Up to 200 dollars in 20-dollar bills
+    private final int DEFAULT_LIMIT_$50 = 20;//  Up to 1000 dollars in 50-dollar bills
+    private final int DEFAULT_LIMIT_$100 = 30; // Up to 3000 dollars in 100-dollar bills
 
     //  Array to easily handle the limits defined above. Used this way to conveniently modify
     //  each specific limit per denomination
@@ -121,7 +121,7 @@ public class Denominator {
         return combinations;
     }
 
-    public static int validateSumOfMap(EnumMap<DollarDenomination, Integer> parsedMap){
+    public static int totalMappedAmount(EnumMap<DollarDenomination, Integer> parsedMap){
 
         int ret = 0;
         for (Map.Entry<DollarDenomination, Integer> entry : parsedMap.entrySet()) {
@@ -129,34 +129,5 @@ public class Denominator {
         }
         return ret;
     }
-
-
-
-    public static void main(String[] args) {
-        Denominator denominator = new Denominator();
-
-        // Example ATM bill map representing the amount of bills per denomination available in the ATM
-        EnumMap<DollarDenomination, Integer> atmBillMap = new EnumMap<>(DollarDenomination.class);
-        atmBillMap.put(DollarDenomination.$1, 0);
-        atmBillMap.put(DollarDenomination.$2, 0);
-        atmBillMap.put(DollarDenomination.$5, 100);
-        atmBillMap.put(DollarDenomination.$10, 100);
-        atmBillMap.put(DollarDenomination.$20, 100);
-        atmBillMap.put(DollarDenomination.$50, 100);
-        atmBillMap.put(DollarDenomination.$100, 2);
-
-        // Test various target amounts including edge cases
-        int[] targetAmounts = {27, 2, 5, 125, 300};
-
-        for (int targetAmount : targetAmounts) {
-            System.out.println("Combinations for $" + targetAmount + ":");
-            List<EnumMap<DollarDenomination, Integer>> combinations = denominator.generateCombinations(targetAmount, atmBillMap);
-            for (EnumMap<DollarDenomination, Integer> combination : combinations) {
-                System.out.println(combination + " || actual sum = " + validateSumOfMap(combination));
-            }
-            System.out.println(); // Blank line for better readability between target amounts
-        }
-    }
-
 
 }
