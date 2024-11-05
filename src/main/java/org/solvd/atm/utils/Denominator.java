@@ -3,6 +3,7 @@ package org.solvd.atm.utils;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 public class Denominator {
 
@@ -84,7 +85,8 @@ public class Denominator {
                 totalAmount += counts[i] * denominations[i].getValue();
             }
 
-            // Check if the current combination matches the target amount
+            //  Check if the current combination matches the target amount.
+            //  If it does, store the current counts as the corresponding Map.
             if (totalAmount == targetAmount) {
                 EnumMap<DollarDenomination, Integer> combination = new EnumMap<>(DollarDenomination.class);
                 for (int i = 0; i < denominations.length; i++) {
@@ -93,7 +95,12 @@ public class Denominator {
                 combinations.add(combination);
             }
 
-            // Increment counters and handle overflow for each denomination
+            //  Increment counters and handle overflow for each denomination
+            //  This code will increment I-LIMIT-times the i'th counts counter, then
+            //  start counting the I+1-th counter when it overflows, thus checking
+            //  all potential combinations of bills within the bounds.
+            //  When going back to the start of this menu, it will only save it as a Map
+            //  if it matches the parsed amount.
             int i = 0;
             while (i < denominations.length) {
                 counts[i]++;
@@ -114,6 +121,42 @@ public class Denominator {
         return combinations;
     }
 
+    public static int validateSumOfMap(EnumMap<DollarDenomination, Integer> parsedMap){
+
+        int ret = 0;
+        for (Map.Entry<DollarDenomination, Integer> entry : parsedMap.entrySet()) {
+            ret += entry.getKey().getValue() * entry.getValue();
+        }
+        return ret;
+    }
+
+
+
+    public static void main(String[] args) {
+        Denominator denominator = new Denominator();
+
+        // Example ATM bill map representing the amount of bills per denomination available in the ATM
+        EnumMap<DollarDenomination, Integer> atmBillMap = new EnumMap<>(DollarDenomination.class);
+        atmBillMap.put(DollarDenomination.$1, 0);
+        atmBillMap.put(DollarDenomination.$2, 0);
+        atmBillMap.put(DollarDenomination.$5, 100);
+        atmBillMap.put(DollarDenomination.$10, 100);
+        atmBillMap.put(DollarDenomination.$20, 100);
+        atmBillMap.put(DollarDenomination.$50, 100);
+        atmBillMap.put(DollarDenomination.$100, 2);
+
+        // Test various target amounts including edge cases
+        int[] targetAmounts = {27, 2, 5, 125, 300};
+
+        for (int targetAmount : targetAmounts) {
+            System.out.println("Combinations for $" + targetAmount + ":");
+            List<EnumMap<DollarDenomination, Integer>> combinations = denominator.generateCombinations(targetAmount, atmBillMap);
+            for (EnumMap<DollarDenomination, Integer> combination : combinations) {
+                System.out.println(combination + " || actual sum = " + validateSumOfMap(combination));
+            }
+            System.out.println(); // Blank line for better readability between target amounts
+        }
+    }
 
 
 }
