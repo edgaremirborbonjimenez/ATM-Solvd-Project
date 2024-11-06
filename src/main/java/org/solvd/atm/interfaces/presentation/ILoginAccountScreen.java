@@ -2,5 +2,5 @@ package org.solvd.atm.interfaces.presentation;
 
 public interface ILoginAccountScreen {
     void showLogin();
-    void errorMessage();
+    void errorMessage(String message);
 }

@@ -4,10 +4,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solvd.atm.domain.ATM;
 import org.solvd.atm.domain.Account;
+import org.solvd.atm.dtos.AccountDTO;
+import org.solvd.atm.implementations.businessobject.AccountService;
 import org.solvd.atm.implementations.data.AccountDAO;
 import org.solvd.atm.implementations.presentation.LoginScreen;
 import org.solvd.atm.implementations.presentation.OptionMenuScreen;
 import org.solvd.atm.interfaces.business.ILoginBusiness;
+import org.solvd.atm.interfaces.businessObjects.IAccountService;
 import org.solvd.atm.interfaces.data.IAccountDAO;
 import org.solvd.atm.interfaces.presentation.ILoginAccountScreen;
 import org.solvd.atm.interfaces.presentation.IOptionsMenuScreen;
@@ -18,6 +21,7 @@ public class LoginBusiness implements ILoginBusiness {
     ILoginAccountScreen loginAccountScreen;
     IAccountDAO accountDAO = new AccountDAO();
     IOptionsMenuScreen optionsMenuScreen = new OptionMenuScreen();
+    IAccountService accountService;
     private ATM ATM;
 
     public LoginBusiness(){
@@ -30,14 +34,12 @@ public class LoginBusiness implements ILoginBusiness {
 
     @Override
     public void loginAccount(String accountNumber,String PIN){
-
-        Account acc = accountDAO.findAccountByNumberAndPin(accountNumber,PIN);
-        if(acc.getNumber().equals(accountNumber)  && acc.getPIN().equals(PIN)){
-            optionsMenuScreen.showOptionsMenu();
-        } else {
-            logger.info("Invalid account number or pin");
+        try{
+            AccountDTO acc = accountService.validateAccount(accountNumber,PIN);
+        } catch (Exception e){
+            logger.error(e.getMessage());
+            loginAccountScreen.errorMessage("Invalid credentials.");
         }
-
     }
 
     @Override
@@ -48,5 +50,10 @@ public class LoginBusiness implements ILoginBusiness {
     public void setLoginAccountScreen(ILoginAccountScreen loginAccountScreen){
         this.loginAccountScreen = loginAccountScreen;
     }
+
+    public void setAccountService(IAccountService accountService){
+        this.accountService = accountService;
+    }
+
 
 }

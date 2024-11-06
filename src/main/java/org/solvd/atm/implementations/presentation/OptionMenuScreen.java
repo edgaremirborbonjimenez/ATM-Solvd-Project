@@ -17,6 +17,8 @@ public class OptionMenuScreen implements IOptionsMenuScreen {
             System.out.println("1 - See balance");
             System.out.println("2 - Transfer money");
             System.out.println("3 - Extract money");
+            System.out.println("4 - Deposit money");
+            System.out.println("5 - Initialize a new ATM");
             System.out.println("0 - Close session");
             option = scanner.nextInt();
             scanner.nextLine();
@@ -29,6 +31,12 @@ public class OptionMenuScreen implements IOptionsMenuScreen {
                     break;
                 case 3:
                     System.out.println("Extract money");
+                    break;
+                case 4:
+                    System.out.println("Deposit money");
+                    break;
+                case 5:
+                    System.out.println("Initialize atm");
                     break;
                 case 0:
                     break;

@@ -1,5 +1,7 @@
 package org.solvd.atm.implementations.presentation;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.solvd.atm.implementations.business.LoginBusiness;
 import org.solvd.atm.interfaces.business.ILoginBusiness;
 import org.solvd.atm.interfaces.presentation.ILoginAccountScreen;
@@ -10,6 +12,7 @@ public class LoginScreen implements ILoginAccountScreen {
 
     Scanner scanner = new Scanner(System.in);
     ILoginBusiness loginBusiness;
+    private static final Logger logger = LogManager.getLogger();
 
     @Override
     public void showLogin(){
@@ -21,8 +24,9 @@ public class LoginScreen implements ILoginAccountScreen {
     }
 
     @Override
-    public void errorMessage(){
-
+    public void errorMessage(String message){
+        System.out.println(message);
+        logger.error(message);
     }
 
     public void setLoginBusiness (ILoginBusiness loginBusiness){
