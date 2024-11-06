@@ -1,0 +1,12 @@
+2024-11-04 19:03:20.274 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-04 19:29:10.266 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-04 20:00:07.916 [main] ERROR org.solvd.atm.utils.database.implementations.HikariCPDataSource - maxPoolSize cannot be less than 1
+2024-11-04 20:01:15.936 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-04 20:04:52.922 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-04 20:05:58.040 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 00:49:16.321 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 01:10:22.729 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 01:12:23.359 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 01:12:37.043 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 01:14:38.924 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 01:14:38.979 [main] INFO  org.solvd.atm.implementations.data.AccountDAO - Invalid account number or pin
