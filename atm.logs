@@ -1,0 +1,27 @@
+2024-11-06 20:13:19.141 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.businessObjects.IAccountService.validateAccount(String, String)" because "this.accountService" is null
+2024-11-06 20:13:19.145 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-06 20:14:53.782 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.businessObjects.IAccountService.validateAccount(String, String)" because "this.accountService" is null
+2024-11-06 20:14:53.788 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-06 20:16:38.509 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.data.IAccountDAO.findAccountByNumberAndPin(String, String)" because "this.accountDAO" is null
+2024-11-06 20:16:38.515 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-06 20:16:55.869 [main] ERROR org.solvd.atm.utils.database.implementations.HikariCPDataSource - maxPoolSize cannot be less than 1
+2024-11-06 20:17:39.365 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "com.zaxxer.hikari.HikariDataSource.getConnection()" because the return value of "org.solvd.atm.utils.database.implementations.HikariCPDataSource.getDataSource()" is null
+2024-11-06 20:17:39.373 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-06 20:18:13.284 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 20:20:08.372 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.business.IOptionsMenuBusiness.setATM(org.solvd.atm.domain.ATM)" because "this.optionsMenuBusiness" is null
+2024-11-06 20:20:08.374 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-06 20:20:45.521 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 20:23:48.476 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 20:24:23.234 [main] ERROR org.solvd.atm.implementations.business.BalanceBusiness - Session validation failed - no active session
+2024-11-06 20:27:01.376 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - No active session found
+2024-11-06 20:27:01.379 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-06 20:30:48.895 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 20:30:51.219 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.business.IBalanceBusiness.setSessionAccountReference(org.solvd.atm.dtos.AccountDTO)" because "this.balanceBusiness" is null
+2024-11-06 20:30:51.220 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-06 20:33:52.714 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 20:34:45.755 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.business.IBalanceBusiness.setSessionAccountReference(org.solvd.atm.dtos.AccountDTO)" because "this.balanceBusiness" is null
+2024-11-06 20:34:45.758 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-06 20:35:02.375 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 20:37:54.147 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.business.IBalanceBusiness.setSessionAccountReference(org.solvd.atm.dtos.AccountDTO)" because "this.balanceBusiness" is null
+2024-11-06 20:37:54.149 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-06 20:43:03.488 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created

@@ -58,4 +58,8 @@ public class OptionMenuBusiness implements IOptionsMenuBusiness {
     public void setATM(ATM ATM) {
         this.ATM = ATM;
     }
+
+    public void setBalanceBusiness(BalanceBusiness balanceBusiness) {
+        this.balanceBusiness = balanceBusiness;
+    }
 }
