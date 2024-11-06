@@ -103,7 +103,7 @@ public class DepositBusiness implements IDepositBusiness {
         }
         // check denomination counts are positive
         for (Map.Entry<DollarDenomination, Integer> entry : denomination.entrySet()) {
-            if (entry.getValue() <= 0) {
+            if (entry.getValue() < 0) {
                 throw new BusinessException(
                         "Invalid count for denomination " + entry.getKey() + ": " + entry.getValue()
                 );

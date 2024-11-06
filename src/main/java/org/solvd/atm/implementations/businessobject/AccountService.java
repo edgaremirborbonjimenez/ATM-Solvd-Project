@@ -47,19 +47,6 @@ public class AccountService implements IAccountService {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setNumber(account.getNumber());
 
-        List<CurrencyDTO> currencyDTOs = new ArrayList<>();
-
-        if (account.getAccountCurrency() != null) {
-            for (AccountCurrency accountCurrency : account.getAccountCurrency()) {
-                CurrencyDTO currencyDTO = new CurrencyDTO();
-                currencyDTO.setName(accountCurrency.getCurrency().getName());
-                currencyDTO.setAmount(accountCurrency.getAmount());
-                currencyDTO.setEquivalentToDollar(accountCurrency.getCurrency().getEquivalentToDollar());
-                currencyDTOs.add(currencyDTO);
-            }
-        }
-
-        accountDTO.setCurrencies(currencyDTOs);
         return accountDTO;
     }
 }

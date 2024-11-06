@@ -43,56 +43,56 @@ public class DepositDAO implements IDepositDAO {
 
     public DepositDAO() {
         this.dataSource = HikariCPDataSource.getInstance();
-        //try {
-        //    this.dataSource.setPoolSize(1);
-        //} catch (ConnectionException e) {
-        //    logger.error("Failed to set connection pool size", e);
-        //    throw new DataException("Failed to initialize DAO "+ e);
-        //}
     }
 
 
     @Override
     public Deposit deposit(String accountNumber, Double amount, String currency) {
 
-        String referenceNumber = generateReferenceNumber(); // for storing & retrieving
+        String referenceNumber = generateReferenceNumber();
 
-        try(Connection conn = dataSource.getDataSource().getConnection()) {
-            PreparedStatement insertStmt = null;
-            PreparedStatement updateStmt = null;
+        try (Connection conn = dataSource.getDataSource().getConnection()) {
+            conn.setAutoCommit(false); // begin trans
 
-            conn.setAutoCommit(false); // begin transaction
+            try {
+                PreparedStatement insertStmt = conn.prepareStatement(INSERT_DEPOSIT);
+                insertStmt.setString(1, referenceNumber);
+                insertStmt.setDouble(2, amount);
+                insertStmt.setString(3, accountNumber);
+                insertStmt.setString(4, currency);
 
-            insertStmt = conn.prepareStatement(INSERT_DEPOSIT);
-            insertStmt.setString(1, referenceNumber);
-            insertStmt.setDouble(2, amount);
-            insertStmt.setString(3, accountNumber);
-            insertStmt.setString(4, currency);
+                int insertResult = insertStmt.executeUpdate();
+                if (insertResult != 1) {
+                    throw new SQLException("Failed to insert deposit record");
+                }
 
-            int insertResult = insertStmt.executeUpdate();
-            if (insertResult != 1) {
-                throw new SQLException("Failed to insert deposit record");
+                PreparedStatement updateStmt = conn.prepareStatement(UPDATE_ACCOUNT_BALANCE);
+                updateStmt.setDouble(1, amount);
+                updateStmt.setString(2, accountNumber);
+                updateStmt.setString(3, currency);
+
+                int updateResult = updateStmt.executeUpdate();
+                if (updateResult != 1) {
+                    throw new SQLException("Failed to update account balance");
+                }
+
+                conn.commit(); // commit the trans
+                return getDepositByReference(conn, referenceNumber);
+
+            } catch (SQLException e) {
+                try {
+                    conn.rollback();
+                } catch (SQLException rollbackEx) {
+                    logger.error("Error rolling back transaction", rollbackEx);
+                }
+                throw e;
             }
-
-            updateStmt = conn.prepareStatement(UPDATE_ACCOUNT_BALANCE);
-            updateStmt.setDouble(1, amount);
-            updateStmt.setString(2, accountNumber);
-            updateStmt.setString(3, currency);
-
-            int updateResult = updateStmt.executeUpdate();
-            if (updateResult != 1) {
-                throw new SQLException("Failed to update account balance");
-            }
-
-            conn.commit(); // commit the trans
-            return getDepositByReference(conn, referenceNumber);
 
         } catch (SQLException e) {
             logger.error("Error storing deposit in database - Account: {}, Amount: {}, Currency: {}",
                     accountNumber, amount, currency, e);
-            throw new DataException("Failed to store deposit in database " + e);
+            throw new DataException("Failed to store deposit in database "+ e);
         }
-
     }
 
     private String generateReferenceNumber() {

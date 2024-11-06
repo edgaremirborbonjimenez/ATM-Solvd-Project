@@ -83,7 +83,6 @@ public class AccountDAO implements IAccountDAO {
         Account account = new Account();
         account.setId(rs.getInt("id"));
         account.setNumber(rs.getString("number"));
-        account.setPIN(rs.getString("pin"));
 
         List<AccountCurrency> accountCurrencies = new ArrayList<>();
         do {
