@@ -24,3 +24,8 @@
 2024-11-06 02:10:05.829 [main] ERROR org.solvd.atm.utils.database.implementations.HikariCPDataSource - maxPoolSize cannot be less than 1
 2024-11-06 02:10:13.861 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "com.zaxxer.hikari.HikariDataSource.getConnection()" because the return value of "org.solvd.atm.utils.database.implementations.HikariCPDataSource.getDataSource()" is null
 2024-11-06 02:10:13.862 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-06 02:15:55.287 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 02:17:06.554 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 02:24:22.290 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-06 02:24:22.414 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.business.IOptionsMenuBusiness.setATM(org.solvd.atm.domain.ATM)" because "this.optionsMenuBusiness" is null
+2024-11-06 02:24:22.415 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.

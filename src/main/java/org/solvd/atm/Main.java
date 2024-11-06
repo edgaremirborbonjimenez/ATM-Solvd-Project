@@ -3,9 +3,11 @@ package org.solvd.atm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solvd.atm.implementations.business.LoginBusiness;
+import org.solvd.atm.implementations.business.OptionMenuBusiness;
 import org.solvd.atm.implementations.businessobject.AccountService;
 import org.solvd.atm.implementations.data.AccountDAO;
 import org.solvd.atm.implementations.presentation.LoginScreen;
+import org.solvd.atm.implementations.presentation.OptionMenuScreen;
 import org.solvd.atm.interfaces.business.ILoginBusiness;
 import org.solvd.atm.utils.database.implementations.HikariCPDataSource;
 
@@ -17,6 +19,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        HikariCPDataSource.getInstance().setPoolSize(5);
         LoginBusiness loginBusiness = new LoginBusiness();
         LoginScreen loginScreen = new LoginScreen();
         loginBusiness.setLoginAccountScreen(loginScreen);
@@ -24,6 +27,9 @@ public class Main {
         AccountService accountService = new AccountService();
         loginBusiness.setAccountService(accountService);
         accountService.setAccountDAO(new AccountDAO());
+        loginBusiness.setOptionsMenuScreen(new OptionMenuScreen());
+        loginBusiness.setOptionsMenuBusiness(new OptionMenuBusiness());
+
         loginBusiness.start();
         /*HikariCPDataSource.getInstance().setPoolSize(5);
         HikariCPDataSource  h = HikariCPDataSource.getInstance();
