@@ -1,5 +1,6 @@
 package org.solvd.atm.interfaces.presentation;
 
+import org.solvd.atm.dtos.AccountDTO;
 import org.solvd.atm.dtos.TransactionDTO;
 
 public interface ITransactionScreen {
