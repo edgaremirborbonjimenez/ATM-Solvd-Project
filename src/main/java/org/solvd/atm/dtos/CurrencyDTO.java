@@ -3,6 +3,7 @@ package org.solvd.atm.dtos;
 public class CurrencyDTO {
     private String name;
     private Double amount;
+    private Double equivalentToDollar;
 
     public CurrencyDTO(){}
 
@@ -22,11 +23,20 @@ public class CurrencyDTO {
         this.amount = amount;
     }
 
+    public Double getEquivalentToDollar() {
+        return equivalentToDollar;
+    }
+
+    public void setEquivalentToDollar(Double equivalentToDollar) {
+        this.equivalentToDollar = equivalentToDollar;
+    }
+
     @Override
     public String toString() {
         return "CurrencyDTO{" +
                 "name='" + name + '\'' +
                 ", amount=" + amount +
+                ", equivalentToDollar=" + equivalentToDollar +
                 '}';
     }
 }
