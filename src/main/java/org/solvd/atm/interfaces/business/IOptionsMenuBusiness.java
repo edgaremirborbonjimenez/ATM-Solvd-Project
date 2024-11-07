@@ -7,4 +7,7 @@ public interface IOptionsMenuBusiness {
     void showBalance();
     void setSessionAccountReference(AccountDTO account);
     void setATM(ATM ATM);
+    void showTransaction();
+    void showWithraw();
+    void showDeposit();
 }
