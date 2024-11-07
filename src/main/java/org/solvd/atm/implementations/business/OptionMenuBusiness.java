@@ -24,7 +24,7 @@ public class OptionMenuBusiness implements IOptionsMenuBusiness {
 
     @Override
     public void showBalance() {
-        //balanceBusiness.setSessionAccountReference(this.account);
+        balanceBusiness.setSessionAccountReference(this.account);
         balanceScreen.showAllCurrenciesBalance();
     }
 
@@ -52,7 +52,6 @@ public class OptionMenuBusiness implements IOptionsMenuBusiness {
     @Override
     public void setSessionAccountReference(AccountDTO account) {
         this.account = account;
-        balanceBusiness.setSessionAccountReference(account);
     }
 
     @Override
@@ -60,7 +59,11 @@ public class OptionMenuBusiness implements IOptionsMenuBusiness {
         this.ATM = ATM;
     }
 
-    public void setBalanceBusiness(BalanceBusiness balanceBusiness) {
+    public void setBalanceBusiness(IBalanceBusiness balanceBusiness) {
         this.balanceBusiness = balanceBusiness;
+    }
+
+    public void setBalanceScreen(IBalanceScreen balanceScreen) {
+        this.balanceScreen = balanceScreen;
     }
 }

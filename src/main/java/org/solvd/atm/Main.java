@@ -8,32 +8,42 @@ import org.solvd.atm.implementations.businessobject.AccountService;
 import org.solvd.atm.implementations.businessobject.CurrencyService;
 import org.solvd.atm.implementations.data.AccountDAO;
 import org.solvd.atm.implementations.data.CurrencyDAO;
+import org.solvd.atm.implementations.presentation.BalanceScreen;
 import org.solvd.atm.implementations.presentation.LoginScreen;
 import org.solvd.atm.implementations.presentation.OptionMenuScreen;
+import org.solvd.atm.interfaces.business.IBalanceBusiness;
 import org.solvd.atm.interfaces.businessObjects.IAccountService;
 import org.solvd.atm.interfaces.data.IAccountDAO;
+import org.solvd.atm.interfaces.presentation.IBalanceScreen;
 import org.solvd.atm.utils.database.implementations.HikariCPDataSource;
 
 public class Main {
 
     public static void main(String [] args){
         HikariCPDataSource.getInstance().setPoolSize(5);
+        AccountDAO accountDAO = new AccountDAO();
+
+        AccountService accountService = new AccountService();
+        accountService.setAccountDAO(accountDAO);
+
+        CurrencyService currencyService = new CurrencyService();
+
+
         LoginBusiness loginBusiness = new LoginBusiness();
+        OptionMenuBusiness optionMenuBusiness = new OptionMenuBusiness();
         LoginScreen loginScreen = new LoginScreen();
         loginBusiness.setLoginAccountScreen(loginScreen);
         loginScreen.setLoginBusiness(loginBusiness);
-        AccountService accountService = new AccountService();
         loginBusiness.setAccountService(accountService);
-        AccountDAO accountDAO = new AccountDAO();
-        accountService.setAccountDAO(accountDAO);
-        OptionMenuBusiness optionMenuBusiness = new OptionMenuBusiness();
         loginBusiness.setOptionsMenuBusiness(optionMenuBusiness);
         OptionMenuScreen optionMenuScreen = new OptionMenuScreen();
         loginBusiness.setOptionsMenuScreen(optionMenuScreen);
-        BalanceBusiness balanceBusiness = new BalanceBusiness();
+        IBalanceBusiness balanceBusiness = new BalanceBusiness();
+        IBalanceScreen balanceScreen = new BalanceScreen();
+        balanceScreen.setBalanceBusiness(balanceBusiness);
+        optionMenuBusiness.setBalanceScreen(balanceScreen);
         optionMenuBusiness.setBalanceBusiness(balanceBusiness);
         optionMenuScreen.setOptionsMenuBusiness(optionMenuBusiness);
-        CurrencyService currencyService = new CurrencyService();
         balanceBusiness.setCurrencyService(currencyService);
         currencyService.setAccountDAO(accountDAO);
         CurrencyDAO currencyDAO = new CurrencyDAO();

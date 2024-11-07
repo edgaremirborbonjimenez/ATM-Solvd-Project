@@ -16,10 +16,6 @@ public class BalanceBusiness implements IBalanceBusiness {
     private AccountDTO accountSession;
     private ICurrencyService currencyService;
 
-    public void setAccountSession(AccountDTO accountSession) {
-        this.accountSession = accountSession;
-    }
-
     public void setCurrencyService(ICurrencyService currencyService){
         this.currencyService = currencyService;
     }
