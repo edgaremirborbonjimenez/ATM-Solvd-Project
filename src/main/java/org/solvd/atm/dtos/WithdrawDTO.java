@@ -4,7 +4,7 @@ public class WithdrawDTO {
     private String referenceNumber;
     private AccountDTO originAccount;
 
-    private WithdrawDTO(){}
+    public WithdrawDTO(){}
 
     public String getReferenceNumber() {
         return referenceNumber;
