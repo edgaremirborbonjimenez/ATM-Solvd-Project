@@ -1,0 +1,12 @@
+2024-11-07 08:56:44.340 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-07 08:56:51.029 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.business.IOptionsMenuBusiness.startNewATM()" because "this.optionsMenuBusiness" is null
+2024-11-07 08:56:51.030 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-07 08:57:40.170 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-07 08:57:44.534 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.business.IOptionsMenuBusiness.startNewATM()" because "this.optionsMenuBusiness" is null
+2024-11-07 08:57:44.535 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-07 08:59:23.541 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-07 08:59:54.859 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-07 09:04:53.983 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-07 09:07:08.992 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-07 09:07:19.853 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-07 09:08:25.260 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created

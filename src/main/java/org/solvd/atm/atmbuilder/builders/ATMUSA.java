@@ -125,6 +125,7 @@ public class ATMUSA extends AtmBuilder{
         this.loginBusiness.setOptionsMenuBusiness(this.optionsMenuBusiness);
 
         this.accountService.setAccountDAO(this.accountDAO);
+        this.optionsMenuScreen.setOptionsMenuBusiness(this.optionsMenuBusiness);
 
     }
 }

@@ -41,14 +41,19 @@ public class AtmClient {
     }
 
     public void startNewATM(){
+        AbstractAtmMachine lastATM = null;
         if(!atmList.isEmpty()){
-            atmList.peek().pauseExecution();
+            //atmList.peek().pauseExecution();
+            lastATM = atmList.peek();
         }
         AtmBuilder atmUSA = ATMUSA.getInstance();
         AtmDirector.getInstance().makeATM(atmUSA);
         AbstractAtmMachine atm = atmUSA.getResult();
         atmList.push(atm);
         executorService.submit(atm::run);
+        if(lastATM != null){
+            lastATM.pauseExecution();
+        }
     }
 
     public void stopATM(){
@@ -57,6 +62,8 @@ public class AtmClient {
 
             if(!atmList.isEmpty()){
                 atmList.peek().resumeExecution();
+            }else{
+                this.executorService.shutdown();
             }
         }
     }

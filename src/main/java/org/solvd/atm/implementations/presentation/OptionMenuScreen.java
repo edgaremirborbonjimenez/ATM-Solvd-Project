@@ -1,10 +1,13 @@
 package org.solvd.atm.implementations.presentation;
 
+import org.solvd.atm.interfaces.business.IOptionsMenuBusiness;
 import org.solvd.atm.interfaces.presentation.IOptionsMenuScreen;
 
 import java.util.Scanner;
 
 public class OptionMenuScreen implements IOptionsMenuScreen {
+
+    IOptionsMenuBusiness optionsMenuBusiness;
 
     @Override
     public void showOptionsMenu(){
@@ -37,8 +40,11 @@ public class OptionMenuScreen implements IOptionsMenuScreen {
                     break;
                 case 5:
                     System.out.println("Initialize atm");
+                    this.optionsMenuBusiness.startNewATM();
                     break;
                 case 0:
+                    System.out.println("Session Closed");
+                    this.optionsMenuBusiness.closeSession();
                     break;
                 default:
                     System.out.println("Please select a correct option");
@@ -47,5 +53,10 @@ public class OptionMenuScreen implements IOptionsMenuScreen {
             }
         } while (option != 0);
 
+    }
+
+    @Override
+    public void setOptionsMenuBusiness(IOptionsMenuBusiness optionsMenuBusiness) {
+        this.optionsMenuBusiness = optionsMenuBusiness;
     }
 }
