@@ -1,11 +1,14 @@
 package org.solvd.atm.atmbuilder.products;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.solvd.atm.interfaces.business.*;
 import org.solvd.atm.interfaces.businessObjects.*;
 import org.solvd.atm.interfaces.data.*;
 import org.solvd.atm.interfaces.presentation.*;
 
 public abstract class AbstractAtmMachine implements Runnable{
+    private static final Logger logger = LogManager.getLogger();
 
     //Presentations
     protected ILoginAccountScreen loginAccountScreen;
@@ -37,4 +40,106 @@ public abstract class AbstractAtmMachine implements Runnable{
     protected IWithdrawDAO withdrawDAO;
     protected IDepositDAO depositDAO;
 
+
+    public synchronized void pauseExecution(){
+        try{
+            System.out.println("Waiting new ATM");
+            wait();
+        }catch (Exception e){
+            logger.error(e.getMessage());
+        }
+    }
+
+    public synchronized void resumeExecution() {
+        notify();
+        System.out.println("ATM resume");
+    }
+
+    public void setLoginAccountScreen(ILoginAccountScreen loginAccountScreen) {
+        this.loginAccountScreen = loginAccountScreen;
+    }
+
+    public void setOptionsMenuScreen(IOptionsMenuScreen optionsMenuScreen) {
+        this.optionsMenuScreen = optionsMenuScreen;
+    }
+
+    public void setTransactionScreen(ITransactionScreen transactionScreen) {
+        this.transactionScreen = transactionScreen;
+    }
+
+    public void setWithdrawScreen(IWithdrawScreen withdrawScreen) {
+        this.withdrawScreen = withdrawScreen;
+    }
+
+    public void setDepositScreen(IDepositScreen depositScreen) {
+        this.depositScreen = depositScreen;
+    }
+
+    public void setBalanceScreen(IBalanceScreen balanceScreen) {
+        this.balanceScreen = balanceScreen;
+    }
+
+    public void setLoginBusiness(ILoginBusiness loginBusiness) {
+        this.loginBusiness = loginBusiness;
+    }
+
+    public void setOptionsMenuBusiness(IOptionsMenuBusiness optionsMenuBusiness) {
+        this.optionsMenuBusiness = optionsMenuBusiness;
+    }
+
+    public void setBalanceBusiness(IBalanceBusiness balanceBusiness) {
+        this.balanceBusiness = balanceBusiness;
+    }
+
+    public void setTransactionBusiness(ITransactionBusiness transactionBusiness) {
+        this.transactionBusiness = transactionBusiness;
+    }
+
+    public void setWithdrawBusiness(IWithdrawBusiness withdrawBusiness) {
+        this.withdrawBusiness = withdrawBusiness;
+    }
+
+    public void setDepositBusiness(IDepositBusiness depositBusiness) {
+        this.depositBusiness = depositBusiness;
+    }
+
+    public void setAccountService(IAccountService accountService) {
+        this.accountService = accountService;
+    }
+
+    public void setTransactionService(ITransactionService transactionService) {
+        this.transactionService = transactionService;
+    }
+
+    public void setCurrencyService(ICurrencyService currencyService) {
+        this.currencyService = currencyService;
+    }
+
+    public void setWithdrawService(IWithdrawService withdrawService) {
+        this.withdrawService = withdrawService;
+    }
+
+    public void setDepositService(IDepositService depositService) {
+        this.depositService = depositService;
+    }
+
+    public void setAccountDAO(IAccountDAO accountDAO) {
+        this.accountDAO = accountDAO;
+    }
+
+    public void setCurrencyDAO(ICurrencyDAO currencyDAO) {
+        this.currencyDAO = currencyDAO;
+    }
+
+    public void setTransactionDAO(ITransactionDAO transactionDAO) {
+        this.transactionDAO = transactionDAO;
+    }
+
+    public void setWithdrawDAO(IWithdrawDAO withdrawDAO) {
+        this.withdrawDAO = withdrawDAO;
+    }
+
+    public void setDepositDAO(IDepositDAO depositDAO) {
+        this.depositDAO = depositDAO;
+    }
 }
