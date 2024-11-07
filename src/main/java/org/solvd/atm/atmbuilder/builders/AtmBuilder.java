@@ -43,6 +43,7 @@ public abstract class AtmBuilder {
     public abstract void setBusiness();
     public abstract void setServices();
     public abstract void setDAOs();
+    public abstract void setDependencies();
     public AbstractAtmMachine getResult(){
         return atmMachine;
     }

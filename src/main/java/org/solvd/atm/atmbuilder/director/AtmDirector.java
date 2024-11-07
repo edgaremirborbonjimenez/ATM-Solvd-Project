@@ -20,5 +20,6 @@ public class AtmDirector {
         builder.setBusiness();
         builder.setServices();
         builder.setDAOs();
+        builder.setDependencies();
     }
 }

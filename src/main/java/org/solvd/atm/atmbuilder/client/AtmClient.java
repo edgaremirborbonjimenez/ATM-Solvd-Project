@@ -3,6 +3,7 @@ package org.solvd.atm.atmbuilder.client;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solvd.atm.atmbuilder.builders.ATMUSA;
+import org.solvd.atm.atmbuilder.builders.AtmBuilder;
 import org.solvd.atm.atmbuilder.director.AtmDirector;
 import org.solvd.atm.atmbuilder.products.AbstractAtmMachine;
 
@@ -43,10 +44,11 @@ public class AtmClient {
         if(!atmList.isEmpty()){
             atmList.peek().pauseExecution();
         }
-        AtmDirector.getInstance().makeATM(ATMUSA.getInstance());
-        AbstractAtmMachine atm = ATMUSA.getInstance().getResult();
+        AtmBuilder atmUSA = ATMUSA.getInstance();
+        AtmDirector.getInstance().makeATM(atmUSA);
+        AbstractAtmMachine atm = atmUSA.getResult();
         atmList.push(atm);
-        executorService.submit(atm);
+        executorService.submit(atm::run);
     }
 
     public void stopATM(){

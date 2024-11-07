@@ -38,62 +38,60 @@ public class ATMUSA extends AtmBuilder{
     public void setPresentation() {
         //set Atm Presentations
         this.loginAccountScreen = new LoginScreen();
-        loginAccountScreen.setLoginBusiness(this.loginBusiness);
+        this.atmMachine.setLoginAccountScreen(this.loginAccountScreen);
 
         this.optionsMenuScreen = new OptionMenuScreen();
-        this.optionsMenuScreen.setOptionsMenuBusiness(this.optionsMenuBusiness);
-
-        this.balanceScreen = new BalanceScreen();
-        this.balanceScreen.setBalanceBusiness(this.balanceBusiness);
-
-        this.transactionScreen = new TransactionScreen();
-        this.transactionScreen.setTransactionBusiness(this.transactionBusiness);
-
-        this.withdrawScreen = new WithDrawScreen();
-        this.withdrawScreen.setWithdrawBusiness(this.withdrawBusiness);
-
-        this.depositScreen = new DepositScreen();
-        this.depositScreen.setDepositBusiness(this.depositBusiness);
+//        this.optionsMenuScreen.setOptionsMenuBusiness(this.optionsMenuBusiness);
+//
+//        this.balanceScreen = new BalanceScreen();
+//        this.balanceScreen.setBalanceBusiness(this.balanceBusiness);
+//
+//        this.transactionScreen = new TransactionScreen();
+//        this.transactionScreen.setTransactionBusiness(this.transactionBusiness);
+//
+//        this.withdrawScreen = new WithDrawScreen();
+//        this.withdrawScreen.setWithdrawBusiness(this.withdrawBusiness);
+//
+//        this.depositScreen = new DepositScreen();
+//        this.depositScreen.setDepositBusiness(this.depositBusiness);
     }
 
     @Override
     public void setBusiness() {
         //set Atm Businesses
         this.loginBusiness = new LoginBusiness();
-        this.loginBusiness.setAccountService(this.accountService);
-        this.loginBusiness.setOptionsMenuScreen(this.optionsMenuScreen);
-        this.loginBusiness.setOptionsMenuBusiness(this.optionsMenuBusiness);
+        this.atmMachine.setLoginBusiness(this.loginBusiness);
 
         this.optionsMenuBusiness = new OptionMenuBusiness();
-        this.optionsMenuBusiness.setBalanceScreen(this.balanceScreen);
-        this.optionsMenuBusiness.setBalanceBusiness(this.balanceBusiness);
-        this.optionsMenuBusiness.setTransactionScreen(this.transactionScreen);
-        this.optionsMenuBusiness.setTransactionBusiness(this.transactionBusiness);
-        this.optionsMenuBusiness.setWithdrawScreen(this.withdrawScreen);
-        this.optionsMenuBusiness.setWithdrawBusiness(this.withdrawBusiness);
-        this.optionsMenuBusiness.setDepositScreen(this.depositScreen);
-        this.optionsMenuBusiness.setDepositBusiness(this.depositBusiness);
+//        this.optionsMenuBusiness.setBalanceScreen(this.balanceScreen);
+//        this.optionsMenuBusiness.setBalanceBusiness(this.balanceBusiness);
+//        this.optionsMenuBusiness.setTransactionScreen(this.transactionScreen);
+//        this.optionsMenuBusiness.setTransactionBusiness(this.transactionBusiness);
+//        this.optionsMenuBusiness.setWithdrawScreen(this.withdrawScreen);
+//        this.optionsMenuBusiness.setWithdrawBusiness(this.withdrawBusiness);
+//        this.optionsMenuBusiness.setDepositScreen(this.depositScreen);
+//        this.optionsMenuBusiness.setDepositBusiness(this.depositBusiness);
 
         this.balanceBusiness = new BalanceBusiness();
-        this.balanceBusiness.setCurrencyService(this.currencyService);
+//        this.balanceBusiness.setCurrencyService(this.currencyService);
 
 
-        this.transactionBusiness = new TransactionBusiness();
-        this.transactionBusiness.setCurrencyService(this.currencyService);
-        this.transactionBusiness.setAccountService(this.accountService);
-        this.transactionBusiness.setTransactionService(this.transactionService);
+//        this.transactionBusiness = new TransactionBusiness();
+//        this.transactionBusiness.setCurrencyService(this.currencyService);
+//        this.transactionBusiness.setAccountService(this.accountService);
+//        this.transactionBusiness.setTransactionService(this.transactionService);
 
-        this.withdrawBusiness = new WithdrawBusiness();
-        this.withdrawBusiness.setWithdrawService(this.withdrawService);
-        this.withdrawBusiness.setAccountService(this.accountService);
-        this.withdrawBusiness.setCurrencyService(this.currencyService);
-        this.withdrawBusiness.setWithdrawService(this.withdrawService);
-        this.withdrawBusiness.setOptionMenuBusiness(this.optionsMenuBusiness);
+//        this.withdrawBusiness = new WithdrawBusiness();
+//        this.withdrawBusiness.setWithdrawService(this.withdrawService);
+//        this.withdrawBusiness.setAccountService(this.accountService);
+//        this.withdrawBusiness.setCurrencyService(this.currencyService);
+//        this.withdrawBusiness.setWithdrawService(this.withdrawService);
+//        this.withdrawBusiness.setOptionMenuBusiness(this.optionsMenuBusiness);
 
         this.depositBusiness = new DepositBusiness();
-        this.depositBusiness.setDepositService(this.depositService);
-        this.depositBusiness.setCurrencyService(this.currencyService);
-        this.depositBusiness.setOptionMenuBusiness(this.optionsMenuBusiness);
+//        this.depositBusiness.setDepositService(this.depositService);
+//        this.depositBusiness.setCurrencyService(this.currencyService);
+//        this.depositBusiness.setOptionMenuBusiness(this.optionsMenuBusiness);
 
     }
 
@@ -102,8 +100,8 @@ public class ATMUSA extends AtmBuilder{
         //set Atm Services
         this.accountService = new AccountService();
         this.currencyService = new CurrencyService();
-        this.transactionService = new TransactionService();
-        this.withdrawService = new WithdrawService();
+//        this.transactionService = new TransactionService();
+//        this.withdrawService = new WithdrawService();
         this.depositService = new DepositService();
     }
 
@@ -112,8 +110,21 @@ public class ATMUSA extends AtmBuilder{
         //set Atm Daos
         this.accountDAO = new AccountDAO();
         this.currencyDAO = new CurrencyDAO();
-        this.transactionDAO = new TransactionDAO();
-        this.withdrawDAO = new WithdrawDAO();
+//        this.transactionDAO = new TransactionDAO();
+//        this.withdrawDAO = new WithdrawDAO();
         this.depositDAO = new DepositDAO();
+    }
+
+    @Override
+    public void setDependencies() {
+        this.loginAccountScreen.setLoginBusiness(this.loginBusiness);
+
+        this.loginBusiness.setLoginAccountScreen(this.loginAccountScreen);
+        this.loginBusiness.setAccountService(this.accountService);
+        this.loginBusiness.setOptionsMenuScreen(this.optionsMenuScreen);
+        this.loginBusiness.setOptionsMenuBusiness(this.optionsMenuBusiness);
+
+        this.accountService.setAccountDAO(this.accountDAO);
+
     }
 }
