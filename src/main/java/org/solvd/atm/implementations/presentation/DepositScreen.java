@@ -48,6 +48,7 @@ public class DepositScreen implements IDepositScreen {
             int count = scanner.nextInt();
             denominationMap.put(denom, count);
         }
+        selectAccountCurrencyToDeposit();
     }
 
     @Override

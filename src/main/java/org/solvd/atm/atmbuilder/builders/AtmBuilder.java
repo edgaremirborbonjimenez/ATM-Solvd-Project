@@ -25,6 +25,9 @@ public abstract class AtmBuilder {
 
     //Services (Businesses Objects)
     protected IAccountService accountService;
+    protected IATMInfoService atmInfoService;
+    protected IATMService atmService;
+    protected ISessionInfoService sessionInfoService;
     protected ICurrencyService currencyService;
     protected ITransactionService transactionService;
     protected IWithdrawService withdrawService;
@@ -32,10 +35,13 @@ public abstract class AtmBuilder {
 
     //DAOs
     protected IAccountDAO accountDAO;
+    protected IATMDAO atmdao;
+    protected IATMInfoDAO atmInfoDAO;
     protected ICurrencyDAO currencyDAO;
     protected ITransactionDAO transactionDAO;
     protected IWithdrawDAO withdrawDAO;
     protected IDepositDAO depositDAO;
+    protected ISessionInfoDAO sessionInfoDAO;
 
     protected AbstractAtmMachine atmMachine;
     public abstract void reset();

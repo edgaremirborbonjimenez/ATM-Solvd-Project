@@ -17,6 +17,7 @@ public class ATMDAO implements IATMDAO {
     HikariCPDataSource dataSource;
 
     String FIND_ONE_ATM_DIFFERENT = "SELECT serie_number FROM atms WHERE serie_number NOT IN(";
+    String FIND_ONE = "SELECT serie_number FROM atms LIMIT 1";
 
     public ATMDAO(){
         this.dataSource = HikariCPDataSource.getInstance();
@@ -26,6 +27,11 @@ public class ATMDAO implements IATMDAO {
     public ATM findOneATMSerieWhichIsNotInTheList(List<String> seriesList) {
         String query = String.join(",",seriesList.stream().map(serie->"?").toArray(String[]::new));
         FIND_ONE_ATM_DIFFERENT += query+ ") LIMIT 1";
+
+        if(seriesList.isEmpty()){
+            FIND_ONE_ATM_DIFFERENT = FIND_ONE;
+        }
+
         try(Connection connection = dataSource.getDataSource().getConnection();
             PreparedStatement statement = connection.prepareStatement(FIND_ONE_ATM_DIFFERENT)){
             for(int i = 0; i< seriesList.size();i++){

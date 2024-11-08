@@ -5,24 +5,31 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class SessionManager {
     static SessionManager sessionManager;
-    ConcurrentHashMap<String,Integer> activeAccounts;
-    ConcurrentHashMap<String,String> activeATMs;
+    static ConcurrentHashMap<String,Integer> activeAccounts;
+    static ConcurrentHashMap<String,String> activeATMs;
 
     private SessionManager(){}
 
     public static SessionManager getInstance(){
         if(sessionManager == null){
             sessionManager = new SessionManager();
+            activeAccounts = new ConcurrentHashMap<>();
+            activeATMs = new ConcurrentHashMap<>();
+
         }
         return sessionManager;
     }
 
-    public boolean login(String accountNumber,Integer id,String atmSerie){
-        boolean loginSuccessfully = activeAccounts.putIfAbsent(accountNumber,id) != null;
+    public boolean login(String accountNumber,String atmSerie){
+        boolean loginSuccessfully = activeAccounts.putIfAbsent(accountNumber,0) == null;
         if(loginSuccessfully){
             activeATMs.put(atmSerie,atmSerie);
         }
         return loginSuccessfully;
+    }
+
+    public boolean isActive(String accountNumber){
+        return this.activeAccounts.get(accountNumber) != null;
     }
 
     public void logout(String accountNumber,String atmSerie){
@@ -32,6 +39,10 @@ public class SessionManager {
 
     public Integer getSessionId(String accountNumber){
         return activeAccounts.get(accountNumber);
+    }
+
+    public static void assignIdToAccount(String accountNumber,Integer id){
+        activeAccounts.replace(accountNumber,id);
     }
 
     public List<String> getAllActiveATMs(){

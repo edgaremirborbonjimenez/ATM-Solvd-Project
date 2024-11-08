@@ -21,7 +21,6 @@ public class LoginBusiness implements ILoginBusiness {
 
     private static final Logger logger = LogManager.getLogger();
     ILoginAccountScreen loginAccountScreen;
-    IAccountDAO accountDAO;
     IOptionsMenuScreen optionsMenuScreen;
     IAccountService accountService;
     ISessionInfoService sessionInfoService;
@@ -45,8 +44,16 @@ public class LoginBusiness implements ILoginBusiness {
              accountDTO = accountService.validateAccount(accountNumber,PIN);
             if(accountDTO == null){
                 loginAccountScreen.errorMessage("Invalid credentials.");
+                loginAccountScreen.showLogin();
                 return;
             }
+
+            if(SessionManager.getInstance().isActive(this.accountDTO.getNumber())){
+                loginAccountScreen.errorMessage("Account is already in use, pleas try another or try later");
+                loginAccountScreen.showLogin();
+                return;
+            }
+
             this.init();
 
             optionsMenuBusiness.setATM(ATM);
@@ -55,14 +62,19 @@ public class LoginBusiness implements ILoginBusiness {
         } catch (Exception e){
             logger.error(e.getMessage());
             loginAccountScreen.errorMessage("Invalid credentials.");
+            loginAccountScreen.showLogin();
         }
     }
 
     private void init(){
         this.ATM = atmService.findOneATMSerie();
         this.ATM = atmInfoService.createNewATM(this.ATM.getSerieNumber());
+        atmInfoService.updateATMBillBySerie(this.ATM.getSerieNumber(),this.ATM);
+        atmInfoService.updateATMStadisticsBySerie(this.ATM.getSerieNumber());
+        SessionManager.getInstance().login(this.accountDTO.getNumber(),this.ATM.getSerieNumber());
         SessionDTO sessionCreated = sessionInfoService.createNewSession(this.ATM.getSerieNumber(),accountDTO.getNumber());
-        SessionManager.getInstance().login(this.accountDTO.getNumber(),sessionCreated.getId(),this.ATM.getSerieNumber());
+        SessionManager.assignIdToAccount(this.accountDTO.getNumber(),sessionCreated.getId());
+
     }
 
     @Override
@@ -87,9 +99,6 @@ public class LoginBusiness implements ILoginBusiness {
         this.optionsMenuBusiness = optionsMenuBusiness;
     }
 
-    public void setAccountDAO(IAccountDAO accountDAO) {
-        this.accountDAO = accountDAO;
-    }
 
     public void setSessionInfoService(ISessionInfoService sessionInfoService) {
         this.sessionInfoService = sessionInfoService;

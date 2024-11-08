@@ -55,13 +55,24 @@ public class WithdrawBusiness implements IWithdrawBusiness {
             throw new BusinessException("ATM has insufficient funds");
         }
 
-        List<EnumMap<DollarDenomination, Integer>> results =
-                Denominator.generateCombinations(amountToWithdraw, (EnumMap<DollarDenomination, Integer>) atm.getMoney());
+        List<EnumMap<DollarDenomination, Integer>> results = Denominator.generateCombinations(amountToWithdraw, parseToEnumMap(atm.getMoney()));
 
         if (results.isEmpty()) {
             throw new BusinessException("Cannot provide exact change for this amount");
         }
         return results;
+    }
+
+    public static EnumMap<DollarDenomination, Integer> parseToEnumMap(Map<DollarDenomination, Integer> inputMap) {
+        EnumMap<DollarDenomination, Integer> enumMap = new EnumMap<>(DollarDenomination.class);
+
+        if (inputMap != null) {
+            for (Map.Entry<DollarDenomination, Integer> entry : inputMap.entrySet()) {
+                enumMap.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        return enumMap;
     }
 
     @Override /*withdrawAmount = USD to withdraw , currency = account currency to get the money */

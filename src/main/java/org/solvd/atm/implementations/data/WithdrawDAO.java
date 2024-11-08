@@ -42,6 +42,11 @@ public class WithdrawDAO implements IWithdrawDAO {
             "JOIN accounts a ON w.origin_account_id = a.id " +
             "WHERE w.reference_number = ?";
 
+    String selectCurrencyByName = "select id,name from currencies where name = ?";
+    String selectATMBySere = "select id,serie_number from atms where serie_number = ?";
+    String insertW = "INSERT INTO withdraws (reference_number, money, origin_account_id, currency_id, atm_id) VALUES (?,?,?,?,?)";
+    String findAccountByNumberQuery = "select id,number from accounts where number = ?";
+
     public WithdrawDAO(){
         this.dataSource = HikariCPDataSource.getInstance();
     }
@@ -51,12 +56,39 @@ public class WithdrawDAO implements IWithdrawDAO {
             conn.setAutoCommit(false); // begin trans
             String referenceNumber = generateReferenceNumber("WHD");
             try {
-                try (PreparedStatement statement = conn.prepareStatement(INSERT_WITHDRAW_USD)) {
+                try (PreparedStatement statement = conn.prepareStatement(insertW);
+                     PreparedStatement findCurrency = conn.prepareStatement(selectCurrencyByName);
+                     PreparedStatement findATM = conn.prepareStatement(selectATMBySere);
+                     PreparedStatement findAccount = conn.prepareStatement(findAccountByNumberQuery)) {
+
+                    findCurrency.setString(1,currency);
+                    findATM.setString(1,atmSerial);
+                    findAccount.setString(1,accountOrigin);
+
+                    ResultSet r = findCurrency.executeQuery();
+
+                    int cur_id = 0,atm_id=0,acc1=0;
+
+                    if(r.next()){
+                        cur_id = r.getInt("id");
+                    }
+
+                    ResultSet r1 = findATM.executeQuery();
+
+                    if(r1.next()){
+                        atm_id = r1.getInt("id");
+                    }
+                    ResultSet r2 = findAccount.executeQuery();
+                    if(r2.next()){
+                        acc1 = r2.getInt("id");
+                    }
+
+
                     statement.setString(1, referenceNumber);
                     statement.setDouble(2, withdrawAmount);
-                    statement.setString(3, accountOrigin);
-                    statement.setString(4, currency);
-                    statement.setString(5, atmSerial);
+                    statement.setInt(3, acc1);
+                    statement.setInt(4, cur_id);
+                    statement.setInt(5, atm_id);
                     int updatedRows = statement.executeUpdate();
                     if (updatedRows != 1) {
                         throw new DataException("Failed to insert withdraw record");
