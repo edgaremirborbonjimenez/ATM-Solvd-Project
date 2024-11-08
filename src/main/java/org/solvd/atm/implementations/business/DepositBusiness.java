@@ -59,7 +59,7 @@ public class DepositBusiness implements IDepositBusiness {
                 throw new BusinessException("Account does not support deposits in " + currency);
             }
 
-            DepositDTO depositDTO = depositService.deposit(accountSession.getNumber(), convertedAmount, currency);
+            DepositDTO depositDTO = depositService.deposit(accountSession.getNumber(), convertedAmount, currency,atm.getSerieNumber());
             if(depositDTO != null){
                 updateATMInventory(denomination);
             }

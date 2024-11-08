@@ -21,9 +21,10 @@ public class DepositDAO implements IDepositDAO {
 
 
     private static final String INSERT_DEPOSIT =
-            "INSERT INTO deposits (reference_number, money, origin_account_id, currency_id) " +
+            "INSERT INTO deposits (reference_number, money, origin_account_id, currency_id, atm_id) " +
                     "VALUES (?, ?, (SELECT id FROM accounts WHERE number = ?), " +
-                    "(SELECT id FROM currencies WHERE name = ?))";
+                    "(SELECT id FROM currencies WHERE name = ?)," +
+                    "(SELECT id FROM atms WHERE serie_number = ?)";
 
     private static final String UPDATE_ACCOUNT_BALANCE =
             "UPDATE account_currencies SET money = money + ? " +
@@ -46,7 +47,7 @@ public class DepositDAO implements IDepositDAO {
 
 
     @Override
-    public Deposit deposit(String accountNumber, Double amount, String currency) {
+    public Deposit deposit(String accountNumber, Double amount, String currency,String atmSerial) {
 
         String referenceNumber = generateReferenceNumber();
 
@@ -59,6 +60,8 @@ public class DepositDAO implements IDepositDAO {
                 insertStmt.setDouble(2, amount);
                 insertStmt.setString(3, accountNumber);
                 insertStmt.setString(4, currency);
+                insertStmt.setString(5, atmSerial);
+
 
                 int insertResult = insertStmt.executeUpdate();
                 if (insertResult != 1) {

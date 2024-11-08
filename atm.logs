@@ -15,3 +15,4 @@
 2024-11-07 22:05:53.790 [main] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - Error: there are no ATMs to update
 2024-11-07 22:53:26.713 [main] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - No serializer found for class org.solvd.atm.domain.stadistics.TotalTransactions and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: org.solvd.atm.domain.files.ATMInfo[0]->org.solvd.atm.domain.files.ATMInfo["stadistics"]->org.solvd.atm.domain.files.ATMStadisticsInfo["transaction_counter"])
 2024-11-07 23:12:56.012 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+

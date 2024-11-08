@@ -2,6 +2,8 @@ package org.solvd.atm.implementations.business;
 
 import org.solvd.atm.domain.atm.ATM;
 import org.solvd.atm.dtos.AccountDTO;
+import org.solvd.atm.dtos.TransactionDTO;
+import org.solvd.atm.implementations.presentation.TransactionScreen;
 import org.solvd.atm.interfaces.business.*;
 import org.solvd.atm.interfaces.presentation.IBalanceScreen;
 import org.solvd.atm.interfaces.presentation.IDepositScreen;
@@ -57,5 +59,20 @@ public class OptionMenuBusiness implements IOptionsMenuBusiness {
     @Override
     public void setATM(ATM ATM) {
         this.ATM = ATM;
+    }
+
+    public void setBalanceBusiness(IBalanceBusiness balanceBusiness) {
+        this.balanceBusiness = balanceBusiness;
+    }
+
+    public void setBalanceScreen(IBalanceScreen balanceScreen) {
+        this.balanceScreen = balanceScreen;
+    }
+
+    public void setTransactionBusiness(TransactionBusiness transactionBusiness){
+        this.transactionBusiness = transactionBusiness;
+    }
+    public void setTransactionScreen(TransactionScreen transactionScreen){
+        this.transactionScreen = transactionScreen;
     }
 }
