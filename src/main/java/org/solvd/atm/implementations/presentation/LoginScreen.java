@@ -29,8 +29,10 @@ public class LoginScreen implements ILoginAccountScreen {
         logger.error(message);
     }
 
-    public void setLoginBusiness (ILoginBusiness loginBusiness){
+    @Override
+    public void setLoginBusiness(ILoginBusiness loginBusiness) {
         this.loginBusiness = loginBusiness;
     }
+
 
 }

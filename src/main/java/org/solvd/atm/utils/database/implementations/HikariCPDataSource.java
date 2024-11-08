@@ -35,7 +35,7 @@ public class HikariCPDataSource implements IConnection<HikariDataSource> {
                 config.setJdbcUrl(properties.getProperty("db.url"));
                 config.setUsername(properties.getProperty("db.username"));
                 config.setPassword(properties.getProperty("db.password"));
-                config.setMaximumPoolSize(this.poolSize);
+                config.setMaximumPoolSize(Integer.parseInt(properties.getProperty("db.poolsize")));
                 dataSource = new HikariDataSource(config);
                 logger.info("Connection Created");
             }catch (Exception e){
