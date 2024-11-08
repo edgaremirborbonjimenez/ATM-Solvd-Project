@@ -2,7 +2,7 @@ package org.solvd.atm.implementations.businessobject;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solvd.atm.domain.Withdraw;
+import org.solvd.atm.domain.atm.Withdraw;
 import org.solvd.atm.dtos.AccountDTO;
 import org.solvd.atm.dtos.WithdrawDTO;
 import org.solvd.atm.interfaces.businessObjects.ICurrencyService;

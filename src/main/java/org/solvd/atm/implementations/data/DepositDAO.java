@@ -2,11 +2,10 @@ package org.solvd.atm.implementations.data;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solvd.atm.domain.Account;
-import org.solvd.atm.domain.Currency;
-import org.solvd.atm.domain.Deposit;
+import org.solvd.atm.domain.atm.Account;
+import org.solvd.atm.domain.atm.Currency;
+import org.solvd.atm.domain.atm.Deposit;
 import org.solvd.atm.interfaces.data.IDepositDAO;
-import org.solvd.atm.utils.database.exceptions.ConnectionException;
 import org.solvd.atm.utils.database.implementations.HikariCPDataSource;
 import org.solvd.atm.utils.exceptions.DataException;
 

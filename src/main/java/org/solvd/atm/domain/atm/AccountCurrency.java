@@ -1,4 +1,4 @@
-package org.solvd.atm.domain;
+package org.solvd.atm.domain.atm;
 
 public class AccountCurrency {
     private Double amount;
