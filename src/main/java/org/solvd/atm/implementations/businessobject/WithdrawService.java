@@ -24,9 +24,9 @@ public class WithdrawService implements IWithdrawService {
     }
 
     @Override
-    public WithdrawDTO doWithdraw(String accountOrigin, Double withdrawAmount, String currency) {
+    public WithdrawDTO doWithdraw(String accountOrigin, Double withdrawAmount, String currency,String atmSerial) {
         try{
-            Withdraw withdraw = withdrawDAO.doWithdraw(accountOrigin, withdrawAmount, currency);
+            Withdraw withdraw = withdrawDAO.doWithdraw(accountOrigin, withdrawAmount, currency,atmSerial);
             return convertToDTO(withdraw);
         } catch (Exception e) {
             logger.error("Error processing deposit - Account: {}, Amount: {}, Currency: {}",
