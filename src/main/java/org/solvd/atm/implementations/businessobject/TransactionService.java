@@ -2,7 +2,7 @@ package org.solvd.atm.implementations.businessobject;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solvd.atm.domain.Transfer;
+import org.solvd.atm.domain.atm.Transfer;
 import org.solvd.atm.dtos.AccountDTO;
 import org.solvd.atm.dtos.CurrencyDTO;
 import org.solvd.atm.dtos.TransactionDTO;
@@ -34,11 +34,11 @@ public class TransactionService implements ITransactionService {
     }
 
     @Override
-    public TransactionDTO sendTransaction(String originAccount, String destinationAccount, Double amount, String senderCurrency, String receiverCurrency) {
+    public TransactionDTO sendTransaction(String originAccount, String destinationAccount, Double amount, String senderCurrency, String receiverCurrency,String atmSerial) {
         validateInputs(originAccount, destinationAccount, amount, senderCurrency,receiverCurrency);
 
         try {
-            Transfer transfer = transactionDAO.sendTransaction(originAccount, destinationAccount, senderCurrency,receiverCurrency, amount);
+            Transfer transfer = transactionDAO.sendTransaction(originAccount, destinationAccount, senderCurrency,receiverCurrency, amount, atmSerial);
             return createDTO(transfer);
         } catch (Exception e) {
             logger.error("Error generating a transaction between {} and {} ",originAccount,destinationAccount);

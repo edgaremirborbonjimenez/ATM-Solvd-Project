@@ -1,6 +1,6 @@
 package org.solvd.atm.implementations.business;
 
-import org.solvd.atm.domain.ATM;
+import org.solvd.atm.domain.atm.ATM;
 import org.solvd.atm.dtos.AccountDTO;
 import org.solvd.atm.dtos.TransactionDTO;
 import org.solvd.atm.implementations.presentation.TransactionScreen;

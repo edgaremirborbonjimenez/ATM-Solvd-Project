@@ -1,5 +1,4 @@
 package org.solvd.atm;
-
 import org.solvd.atm.dtos.CurrencyDTO;
 import org.solvd.atm.implementations.business.BalanceBusiness;
 import org.solvd.atm.implementations.business.LoginBusiness;
@@ -53,5 +52,31 @@ public class Main {
         optionMenuBusiness.setTransactionBusiness(new TransactionBusiness());
         optionMenuBusiness.setTransactionScreen(new TransactionScreen());
         loginBusiness.start();
+      /*
+              SessionInfoDAO dao = new SessionInfoDAO();
+        SessionInfoService s = new SessionInfoService();
+        s.setSessionInfoDAO(dao);
+
+        s.createNewSession("ATM02","12345678");
+        AccountDTO a = new AccountDTO();
+        a.setNumber("987987564");
+        AccountDTO a1 = new AccountDTO();
+        a1.setNumber("321654789");
+        DepositDTO depositInfo = new DepositDTO();
+        depositInfo.setOriginAccount(a);
+        depositInfo.setReferenceNumber("1546156");
+        s.addDepositToSessionBySessionId(3,depositInfo,"MXN",800d);
+
+        WithdrawDTO depositInf = new WithdrawDTO();
+        depositInf.setOriginAccount(a);
+        depositInf.setReferenceNumber("1546156");
+        s.addWithdrawToSessionBySessionId(2,depositInf,"MXN",900d);
+
+        TransactionDTO t = new TransactionDTO();
+
+        t.setReferenceNumber("987987");
+        t.setDestinationAccount(a);
+        t.setOriginAccount(a);
+        s.addTransferToSessionBySessionId(4,t,"USA",1000d);*/
     }
 }

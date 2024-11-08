@@ -1,8 +1,8 @@
 package org.solvd.atm.implementations.businessobject;
 
-import org.solvd.atm.domain.Account;
-import org.solvd.atm.domain.AccountCurrency;
-import org.solvd.atm.domain.Currency;
+import org.solvd.atm.domain.atm.Account;
+import org.solvd.atm.domain.atm.AccountCurrency;
+import org.solvd.atm.domain.atm.Currency;
 import org.solvd.atm.dtos.CurrencyDTO;
 import org.solvd.atm.interfaces.businessObjects.ICurrencyService;
 import org.solvd.atm.interfaces.data.IAccountDAO;

@@ -2,7 +2,7 @@ package org.solvd.atm.implementations.businessobject;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solvd.atm.domain.Withdraw;
+import org.solvd.atm.domain.atm.Withdraw;
 import org.solvd.atm.dtos.AccountDTO;
 import org.solvd.atm.dtos.WithdrawDTO;
 import org.solvd.atm.interfaces.businessObjects.ICurrencyService;
@@ -24,9 +24,9 @@ public class WithdrawService implements IWithdrawService {
     }
 
     @Override
-    public WithdrawDTO doWithdraw(String accountOrigin, Double withdrawAmount, String currency) {
+    public WithdrawDTO doWithdraw(String accountOrigin, Double withdrawAmount, String currency,String atmSerial) {
         try{
-            Withdraw withdraw = withdrawDAO.doWithdraw(accountOrigin, withdrawAmount, currency);
+            Withdraw withdraw = withdrawDAO.doWithdraw(accountOrigin, withdrawAmount, currency,atmSerial);
             return convertToDTO(withdraw);
         } catch (Exception e) {
             logger.error("Error processing deposit - Account: {}, Amount: {}, Currency: {}",
