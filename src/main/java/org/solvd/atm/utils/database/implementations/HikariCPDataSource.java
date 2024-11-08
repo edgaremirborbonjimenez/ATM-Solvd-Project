@@ -10,7 +10,7 @@ import java.io.FileReader;
 import java.util.Properties;
 
 public class HikariCPDataSource implements IConnection<HikariDataSource> {
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(HikariCPDataSource.class);
     private static HikariCPDataSource hikariInstance;
     private int poolSize;
     private static HikariDataSource dataSource;

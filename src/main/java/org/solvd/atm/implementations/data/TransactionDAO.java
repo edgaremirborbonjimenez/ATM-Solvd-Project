@@ -2,9 +2,9 @@ package org.solvd.atm.implementations.data;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solvd.atm.domain.Account;
-import org.solvd.atm.domain.Currency;
-import org.solvd.atm.domain.Transfer;
+import org.solvd.atm.domain.atm.Account;
+import org.solvd.atm.domain.atm.Currency;
+import org.solvd.atm.domain.atm.Transfer;
 import org.solvd.atm.interfaces.data.ITransactionDAO;
 import org.solvd.atm.utils.database.implementations.HikariCPDataSource;
 import org.solvd.atm.utils.exceptions.DataException;
@@ -22,10 +22,10 @@ public class TransactionDAO implements ITransactionDAO {
     private HikariCPDataSource dataSource;
 
     private final static String INSERT_TRANSFER =
-            "INSERT INTO transfers (reference_number, money, origin_account_id, destination_account_id, currency_id) " +
+            "INSERT INTO transfers (reference_number, money, origin_account_id, destination_account_id, currency_id, atm_id) " +
             "SELECT ?, ?, o.id, d.id, c.id " +
-            "FROM accounts o, accounts d, currencies c " +
-            "WHERE o.number = ? AND d.number = ? AND c.name = ?";
+            "FROM accounts o, accounts d, currencies c, atms a " +
+            "WHERE o.number = ? AND d.number = ? AND c.name = ? AND a.serie_number = ?";
 
 
     private final static String UPDATE_ACCOUNT_BALANCE_DESTINATION =
@@ -64,7 +64,7 @@ public class TransactionDAO implements ITransactionDAO {
 
     @Override
     public Transfer sendTransaction(String originAccount, String destinationAccount, String senderCurrency,
-                                    String receiverCurrency, Double amount) {
+                                    String receiverCurrency, Double amount,String atmSerial) {
         try (Connection conn = dataSource.getDataSource().getConnection()) {
 
             Map<String, Double> exchangeRates = new HashMap<>();
@@ -93,6 +93,7 @@ public class TransactionDAO implements ITransactionDAO {
                     statement.setString(3, originAccount);
                     statement.setString(4, destinationAccount);
                     statement.setString(5, receiverCurrency);
+                    statement.setString(6, atmSerial);
                     statement.executeUpdate();
                 }
                 //update origin

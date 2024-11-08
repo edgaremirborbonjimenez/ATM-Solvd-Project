@@ -1,7 +1,8 @@
 package org.solvd.atm.interfaces.business;
 
-import org.solvd.atm.domain.ATM;
+import org.solvd.atm.domain.atm.ATM;
 import org.solvd.atm.dtos.AccountDTO;
+import org.solvd.atm.interfaces.presentation.IBalanceScreen;
 
 public interface IOptionsMenuBusiness {
     void showBalance();
@@ -12,4 +13,6 @@ public interface IOptionsMenuBusiness {
     void showDeposit();
     void closeSession();
     void startNewATM();
+    void setBalanceBusiness(IBalanceBusiness balanceBusiness);
+    void setBalanceScreen(IBalanceScreen balanceScreen);
 }

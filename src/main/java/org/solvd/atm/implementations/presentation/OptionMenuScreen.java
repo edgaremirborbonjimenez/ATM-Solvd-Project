@@ -1,19 +1,23 @@
 package org.solvd.atm.implementations.presentation;
 
 import org.solvd.atm.interfaces.business.IOptionsMenuBusiness;
+import org.solvd.atm.dtos.CurrencyDTO;
+import org.solvd.atm.interfaces.business.IBalanceBusiness;
+import org.solvd.atm.interfaces.business.IOptionsMenuBusiness;
+import org.solvd.atm.interfaces.presentation.IBalanceScreen;
 import org.solvd.atm.interfaces.presentation.IOptionsMenuScreen;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class OptionMenuScreen implements IOptionsMenuScreen {
 
-    IOptionsMenuBusiness optionsMenuBusiness;
-
+    private IOptionsMenuBusiness optionsMenuBusiness;
+    private IBalanceScreen balanceScreen;
     @Override
     public void showOptionsMenu(){
 
         Scanner scanner = new Scanner(System.in);
-
         int option;
         do {
             System.out.println("Select an option:");
@@ -27,10 +31,11 @@ public class OptionMenuScreen implements IOptionsMenuScreen {
             scanner.nextLine();
             switch (option) {
                 case 1:
-                    System.out.println("Balance here");
+                    optionsMenuBusiness.showBalance();
                     break;
                 case 2:
                     System.out.println("Transfer money");
+                    optionsMenuBusiness.showTransaction();
                     break;
                 case 3:
                     System.out.println("Extract money");
