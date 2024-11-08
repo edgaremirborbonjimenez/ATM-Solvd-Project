@@ -82,7 +82,8 @@ public class WithdrawBusiness implements IWithdrawBusiness {
         WithdrawDTO withdraw = withdrawService.doWithdraw(
                 sessionAccount.getNumber(),
                 amountInOriginalCurrency,
-                currency
+                currency,
+                atm.getSerieNumber()
         );
 
         if (withdraw != null){

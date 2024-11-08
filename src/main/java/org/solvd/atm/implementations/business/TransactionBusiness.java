@@ -2,6 +2,7 @@ package org.solvd.atm.implementations.business;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.solvd.atm.domain.atm.ATM;
 import org.solvd.atm.dtos.AccountDTO;
 import org.solvd.atm.dtos.CurrencyDTO;
 import org.solvd.atm.dtos.TransactionDTO;
@@ -18,6 +19,7 @@ public class TransactionBusiness implements ITransactionBusiness {
     private ITransactionService transactionService;
     private ICurrencyService currencyService;
     private AccountDTO accountSession;
+    private ATM atm;
 
     public void setCurrencyService(ICurrencyService currencyService) {
         this.currencyService = currencyService;
@@ -27,6 +29,13 @@ public class TransactionBusiness implements ITransactionBusiness {
         this.transactionService = transactionService;
     }
 
+    @Override
+    public void setATM(ATM atm) {
+        if (atm == null) {
+            throw new BusinessException("ATM reference cannot be null");
+        }
+        this.atm = atm;
+    }
 
     @Override
     public List<CurrencyDTO> getCurrenciesByAccount() {
@@ -53,7 +62,8 @@ public class TransactionBusiness implements ITransactionBusiness {
                     destinationAccount,
                     newAmount,
                     senderCurrency,
-                    receiverCurrency
+                    receiverCurrency,
+                    atm.getSerieNumber()
             );
         } catch (Exception e) {
             logger.error("Error processing transaction");
@@ -72,6 +82,9 @@ public class TransactionBusiness implements ITransactionBusiness {
     private void validateSessionAccount() {
         if (accountSession == null) {
             throw new BusinessException("No account session reference set yet");
+        }
+        if (this.atm == null) {
+            throw new BusinessException("No ATM selected for deposit operation");
         }
     }
 

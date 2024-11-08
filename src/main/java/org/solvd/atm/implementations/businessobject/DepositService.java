@@ -26,10 +26,10 @@ public class DepositService implements IDepositService {
     }
 
     @Override
-    public DepositDTO deposit(String accountNumber, Double amount, String currency) {
+    public DepositDTO deposit(String accountNumber, Double amount, String currency,String atmSerial) {
 
         try{
-            Deposit depositResult = depositDAO.deposit(accountNumber, amount, currency);
+            Deposit depositResult = depositDAO.deposit(accountNumber, amount, currency,atmSerial);
             return mapToDepositDTO(depositResult);
         } catch (Exception e) {
             logger.error("Error processing deposit - Account: {}, Amount: {}, Currency: {}",
