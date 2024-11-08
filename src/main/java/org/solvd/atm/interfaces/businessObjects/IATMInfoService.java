@@ -5,7 +5,7 @@ import org.solvd.atm.implementations.data.ATMInfoDAO;
 
 public interface IATMInfoService {
     ATM createNewATM(String atmSerie,String accountNumber);
-    void updateATMStadisticsBySerie();
+    void updateATMStadisticsBySerie(String atmSerie);
     void updateATMBillBySerie(String atmSerie,ATM atm);
     void setATMInfoDAO(ATMInfoDAO atmInfoDAO);
 }
