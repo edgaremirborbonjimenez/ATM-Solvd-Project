@@ -1,6 +1,7 @@
 package org.solvd.atm.implementations.business;
 
-import org.solvd.atm.domain.atm.ATM;
+import org.solvd.atm.atmbuilder.client.AtmClient;
+import org.solvd.atm.domain.ATM;
 import org.solvd.atm.dtos.AccountDTO;
 import org.solvd.atm.dtos.TransactionDTO;
 import org.solvd.atm.implementations.presentation.TransactionScreen;
@@ -49,6 +50,16 @@ public class OptionMenuBusiness implements IOptionsMenuBusiness {
         depositBusiness.setSessionAccountReference(account);
         depositScreen.enterAmountToDeposit();
 
+    }
+
+    @Override
+    public void startNewATM() {
+        AtmClient.getInstance().startNewATM();
+    }
+
+    @Override
+    public void closeSession() {
+        AtmClient.getInstance().stopATM();
     }
 
     @Override

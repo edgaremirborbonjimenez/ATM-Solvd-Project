@@ -11,6 +11,8 @@ public interface IOptionsMenuBusiness {
     void showTransaction();
     void showWithraw();
     void showDeposit();
+    void closeSession();
+    void startNewATM();
     void setBalanceBusiness(IBalanceBusiness balanceBusiness);
     void setBalanceScreen(IBalanceScreen balanceScreen);
 }

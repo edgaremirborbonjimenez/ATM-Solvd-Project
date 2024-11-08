@@ -1,7 +1,7 @@
 package org.solvd.atm.implementations.presentation;
 
+import org.solvd.atm.interfaces.business.IOptionsMenuBusiness;
 import org.solvd.atm.dtos.CurrencyDTO;
-import org.solvd.atm.implementations.business.BalanceBusiness;
 import org.solvd.atm.interfaces.business.IBalanceBusiness;
 import org.solvd.atm.interfaces.business.IOptionsMenuBusiness;
 import org.solvd.atm.interfaces.presentation.IBalanceScreen;
@@ -45,8 +45,11 @@ public class OptionMenuScreen implements IOptionsMenuScreen {
                     break;
                 case 5:
                     System.out.println("Initialize atm");
+                    this.optionsMenuBusiness.startNewATM();
                     break;
                 case 0:
+                    System.out.println("Session Closed");
+                    this.optionsMenuBusiness.closeSession();
                     break;
                 default:
                     System.out.println("Please select a correct option");
