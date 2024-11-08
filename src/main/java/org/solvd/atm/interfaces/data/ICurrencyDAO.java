@@ -1,7 +1,7 @@
 package org.solvd.atm.interfaces.data;
 
-import org.solvd.atm.domain.AccountCurrency;
-import org.solvd.atm.domain.Currency;
+import org.solvd.atm.domain.atm.AccountCurrency;
+import org.solvd.atm.domain.atm.Currency;
 
 import java.util.List;
 

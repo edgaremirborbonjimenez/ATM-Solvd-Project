@@ -1,11 +1,11 @@
-package org.solvd.atm.domain;
+package org.solvd.atm.domain.atm;
 
-public class Withdraw extends Transaction{
-    public Withdraw(){}
+public class Deposit extends Transaction{
+    public Deposit(){}
 
     @Override
     public String toString() {
-        return "Withdraw{" +
+        return "Deposit{" +
                 "id=" + getId() +
                 ", money=" + getMoney() +
                 ", referenceNumber='" + getReferenceNumber() + '\'' +
