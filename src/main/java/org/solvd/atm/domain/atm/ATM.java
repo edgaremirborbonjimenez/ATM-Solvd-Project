@@ -1,4 +1,4 @@
-package org.solvd.atm.domain;
+package org.solvd.atm.domain.atm;
 
 import org.solvd.atm.utils.DollarDenomination;
 

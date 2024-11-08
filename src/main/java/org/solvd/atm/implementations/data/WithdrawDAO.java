@@ -2,9 +2,9 @@ package org.solvd.atm.implementations.data;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solvd.atm.domain.Account;
-import org.solvd.atm.domain.Currency;
-import org.solvd.atm.domain.Withdraw;
+import org.solvd.atm.domain.atm.Account;
+import org.solvd.atm.domain.atm.Currency;
+import org.solvd.atm.domain.atm.Withdraw;
 import org.solvd.atm.interfaces.data.IWithdrawDAO;
 import org.solvd.atm.utils.database.implementations.HikariCPDataSource;
 import org.solvd.atm.utils.exceptions.DataException;
@@ -21,10 +21,10 @@ public class WithdrawDAO implements IWithdrawDAO {
 
 
     private static final String INSERT_WITHDRAW_USD =
-            "INSERT INTO withdraws (reference_number, money, origin_account_id, currency_id) " +
+            "INSERT INTO withdraws (reference_number, money, origin_account_id, currency_id, atm_id) " +
             "SELECT ?, ?, a.id, c.id " +
-            "FROM accounts a, currencies c " +
-            "WHERE a.number = ? AND c.name = ?";
+            "FROM accounts a, currencies c, atms x" +
+            "WHERE a.number = ? AND c.name = ? AND x.serie_number = ?";
 
     private static final String UPDATE_BALANCE_CURRENCY =
             "UPDATE account_currencies ac " +
@@ -46,7 +46,7 @@ public class WithdrawDAO implements IWithdrawDAO {
         this.dataSource = HikariCPDataSource.getInstance();
     }
     @Override
-    public Withdraw doWithdraw(String accountOrigin, Double withdrawAmount, String currency) {
+    public Withdraw doWithdraw(String accountOrigin, Double withdrawAmount, String currency,String atmSerial) {
         try (Connection conn = dataSource.getDataSource().getConnection()) {
             conn.setAutoCommit(false); // begin trans
             String referenceNumber = generateReferenceNumber("WHD");
@@ -56,6 +56,7 @@ public class WithdrawDAO implements IWithdrawDAO {
                     statement.setDouble(2, withdrawAmount);
                     statement.setString(3, accountOrigin);
                     statement.setString(4, currency);
+                    statement.setString(5, atmSerial);
                     int updatedRows = statement.executeUpdate();
                     if (updatedRows != 1) {
                         throw new DataException("Failed to insert withdraw record");

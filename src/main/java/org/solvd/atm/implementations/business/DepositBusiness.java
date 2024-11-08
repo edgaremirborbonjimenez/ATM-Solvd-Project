@@ -2,7 +2,7 @@ package org.solvd.atm.implementations.business;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solvd.atm.domain.ATM;
+import org.solvd.atm.domain.atm.ATM;
 import org.solvd.atm.dtos.AccountDTO;
 import org.solvd.atm.dtos.CurrencyDTO;
 import org.solvd.atm.dtos.DepositDTO;
@@ -59,7 +59,7 @@ public class DepositBusiness implements IDepositBusiness {
                 throw new BusinessException("Account does not support deposits in " + currency);
             }
 
-            DepositDTO depositDTO = depositService.deposit(accountSession.getNumber(), convertedAmount, currency);
+            DepositDTO depositDTO = depositService.deposit(accountSession.getNumber(), convertedAmount, currency,atm.getSerieNumber());
             if(depositDTO != null){
                 updateATMInventory(denomination);
             }

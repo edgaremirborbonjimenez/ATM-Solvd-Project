@@ -2,16 +2,11 @@ package org.solvd.atm.implementations.businessobject;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solvd.atm.domain.Account;
-import org.solvd.atm.domain.AccountCurrency;
+import org.solvd.atm.domain.atm.Account;
 import org.solvd.atm.dtos.AccountDTO;
-import org.solvd.atm.dtos.CurrencyDTO;
 import org.solvd.atm.interfaces.businessObjects.IAccountService;
 import org.solvd.atm.interfaces.data.IAccountDAO;
 import org.solvd.atm.utils.exceptions.BusinessException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AccountService implements IAccountService {
     private static final Logger logger = LogManager.getLogger(AccountService.class);
