@@ -4,6 +4,7 @@ import org.solvd.atm.dtos.CurrencyDTO;
 import org.solvd.atm.implementations.business.BalanceBusiness;
 import org.solvd.atm.implementations.business.LoginBusiness;
 import org.solvd.atm.implementations.business.OptionMenuBusiness;
+import org.solvd.atm.implementations.business.TransactionBusiness;
 import org.solvd.atm.implementations.businessobject.AccountService;
 import org.solvd.atm.implementations.businessobject.CurrencyService;
 import org.solvd.atm.implementations.data.AccountDAO;
@@ -11,6 +12,7 @@ import org.solvd.atm.implementations.data.CurrencyDAO;
 import org.solvd.atm.implementations.presentation.BalanceScreen;
 import org.solvd.atm.implementations.presentation.LoginScreen;
 import org.solvd.atm.implementations.presentation.OptionMenuScreen;
+import org.solvd.atm.implementations.presentation.TransactionScreen;
 import org.solvd.atm.interfaces.business.IBalanceBusiness;
 import org.solvd.atm.interfaces.businessObjects.IAccountService;
 import org.solvd.atm.interfaces.data.IAccountDAO;
@@ -48,6 +50,8 @@ public class Main {
         currencyService.setAccountDAO(accountDAO);
         CurrencyDAO currencyDAO = new CurrencyDAO();
         currencyService.setCurrencyDAO(currencyDAO);
+        optionMenuBusiness.setTransactionBusiness(new TransactionBusiness());
+        optionMenuBusiness.setTransactionScreen(new TransactionScreen());
         loginBusiness.start();
     }
 }

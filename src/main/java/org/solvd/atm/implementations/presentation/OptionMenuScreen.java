@@ -35,6 +35,7 @@ public class OptionMenuScreen implements IOptionsMenuScreen {
                     break;
                 case 2:
                     System.out.println("Transfer money");
+                    optionsMenuBusiness.showTransaction();
                     break;
                 case 3:
                     System.out.println("Extract money");

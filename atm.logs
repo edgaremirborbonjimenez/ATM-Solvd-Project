@@ -77,3 +77,18 @@ java.lang.NullPointerException: Cannot invoke "org.solvd.atm.interfaces.data.IAc
 2024-11-06 21:18:21.592 [main] INFO  org.solvd.atm.implementations.business.BalanceBusiness - Setting session account reference for account: 12345678
 2024-11-06 21:18:24.462 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.presentation.IBalanceScreen.showAllCurrenciesBalance()" because "this.balanceScreen" is null
 2024-11-06 21:18:24.463 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 01:16:40.435 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 01:16:42.367 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.business.ITransactionBusiness.setSessionAccountReference(org.solvd.atm.dtos.AccountDTO)" because "this.transactionBusiness" is null
+2024-11-08 01:16:42.368 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 01:18:26.883 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 01:21:11.441 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.business.ITransactionBusiness.setSessionAccountReference(org.solvd.atm.dtos.AccountDTO)" because "this.transactionBusiness" is null
+2024-11-08 01:21:11.444 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 01:22:06.534 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 01:26:22.278 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.business.ITransactionBusiness.setSessionAccountReference(org.solvd.atm.dtos.AccountDTO)" because "this.transactionBusiness" is null
+2024-11-08 01:26:22.279 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 01:26:33.677 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 01:27:52.888 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.presentation.ITransactionScreen.selectTransactionCurrency()" because "this.transactionScreen" is null
+2024-11-08 01:27:52.889 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 01:28:36.573 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 01:29:43.391 [main] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.business.ITransactionBusiness.getCurrenciesByAccount()" because "this.transactionBusiness" is null
+2024-11-08 01:29:43.393 [main] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
