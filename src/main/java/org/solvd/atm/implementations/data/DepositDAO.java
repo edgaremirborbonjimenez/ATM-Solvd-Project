@@ -41,6 +41,11 @@ public class DepositDAO implements IDepositDAO {
                     "WHERE d.reference_number = ?";
 
 
+    String selectCurrencyByName = "select id,name from currencies where name = ?";
+    String selectATMBySere = "select id,serie_number from atms where serie_number = ?";
+    String insertW = "INSERT INTO deposits (reference_number, money, origin_account_id, currency_id, atm_id) VALUES (?,?,?,?,?)";
+    String findAccountByNumberQuery = "select id,number from accounts where number = ?";
+
     public DepositDAO() {
         this.dataSource = HikariCPDataSource.getInstance();
     }
@@ -54,13 +59,38 @@ public class DepositDAO implements IDepositDAO {
         try (Connection conn = dataSource.getDataSource().getConnection()) {
             conn.setAutoCommit(false); // begin trans
 
-            try {
-                PreparedStatement insertStmt = conn.prepareStatement(INSERT_DEPOSIT);
+            try (PreparedStatement insertStmt = conn.prepareStatement(insertW);
+                 PreparedStatement findCurrency = conn.prepareStatement(selectCurrencyByName);
+                 PreparedStatement findATM = conn.prepareStatement(selectATMBySere);
+                 PreparedStatement findAccount = conn.prepareStatement(findAccountByNumberQuery)) {
+
+                findCurrency.setString(1,currency);
+                findATM.setString(1,atmSerial);
+                findAccount.setString(1,accountNumber);
+
+                ResultSet r = findCurrency.executeQuery();
+
+                int cur_id = 0,atm_id=0,acc1=0;
+
+                if(r.next()){
+                    cur_id = r.getInt("id");
+                }
+
+                ResultSet r1 = findATM.executeQuery();
+
+                if(r1.next()){
+                    atm_id = r1.getInt("id");
+                }
+                ResultSet r2 = findAccount.executeQuery();
+                if(r2.next()){
+                    acc1 = r2.getInt("id");
+                }
+
                 insertStmt.setString(1, referenceNumber);
                 insertStmt.setDouble(2, amount);
-                insertStmt.setString(3, accountNumber);
-                insertStmt.setString(4, currency);
-                insertStmt.setString(5, atmSerial);
+                insertStmt.setInt(3, acc1);
+                insertStmt.setInt(4, cur_id);
+                insertStmt.setInt(5, atm_id);
 
 
                 int insertResult = insertStmt.executeUpdate();

@@ -79,7 +79,12 @@ public class TransactionScreen implements ITransactionScreen {
         }
 
 
-        transactionBusiness.sendTransaction(this.accountNumber, this.amount, this.accountCurrency, this.currencyToSend);
+        TransactionDTO dto =  transactionBusiness.sendTransaction(this.accountNumber, this.amount, this.accountCurrency, this.currencyToSend);
+        if(dto == null){
+            showErrorMessage("Somtehing went wrong");
+            return;
+        }
+        this.showSuccess(dto);
     }
 
     @Override
@@ -91,4 +96,9 @@ public class TransactionScreen implements ITransactionScreen {
     public void showErrorMessage(String err) {
         System.out.println(err);
     }
+
+    public void setTransactionBusiness(ITransactionBusiness transactionBusiness) {
+        this.transactionBusiness = transactionBusiness;
+    }
+
 }

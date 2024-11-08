@@ -57,6 +57,11 @@ public class TransactionDAO implements ITransactionDAO {
     private final static String GET_FX_RATE =
             "SELECT name, equivalent_to_dollar FROM currencies WHERE name IN (?, ?)";
 
+    String selectCurrencyByName = "select id,name from currencies where name = ?";
+    String selectATMBySere = "select id,serie_number from atms where serie_number = ?";
+    String insertTransafer = "INSERT INTO transfers (reference_number, money, origin_account_id, destination_account_id, currency_id, atm_id) VALUES (?,?,?,?,?,?)";
+    String findAccountByNumberQuery = "select id,number from accounts where number = ?";
+
 
     public TransactionDAO() {
         this.dataSource = HikariCPDataSource.getInstance();
@@ -87,13 +92,57 @@ public class TransactionDAO implements ITransactionDAO {
                     }
                 }
 
-                try (PreparedStatement statement = conn.prepareStatement(INSERT_TRANSFER)) {
+                try (PreparedStatement statement = conn.prepareStatement(insertTransafer);
+                     PreparedStatement findCurrency = conn.prepareStatement(selectCurrencyByName);
+                     PreparedStatement findATM = conn.prepareStatement(selectATMBySere);
+                     PreparedStatement findAccountByNumber = conn.prepareStatement(findAccountByNumberQuery)) {
+
+                    int acc1 = 0;
+                    int acc2 = 0;
+
+                    findAccountByNumber.setString(1,originAccount);
+                    ResultSet acc1R = findAccountByNumber.executeQuery();
+                    if(acc1R.next()){
+                        acc1 = acc1R.getInt("id");
+                    }else{
+                        return null;
+                    }
+
+                    findAccountByNumber.setString(1,destinationAccount);
+                    ResultSet acc2R = findAccountByNumber.executeQuery();
+                    if(acc2R.next()){
+                        acc2 = acc2R.getInt("id");
+                    }else{
+                        return null;
+                    }
+
+
+
+                    findCurrency.setString(1,receiverCurrency);
+                    ResultSet rCur = findCurrency.executeQuery();
+                    int currencyId = 0;
+                    if(rCur.next()){
+                        currencyId = rCur.findColumn("id");
+                    }else{
+                        return null;
+                    }
+
+                    findATM.setString(1,atmSerial);
+                    ResultSet rATM = findATM.executeQuery();
+
+                    int atmId = 0;
+                    if(rATM.next()){
+                        atmId = rCur.findColumn("id");
+                    }else{
+                        return null;
+                    }
+
                     statement.setString(1, referenceNumber);
                     statement.setDouble(2, amount);
-                    statement.setString(3, originAccount);
-                    statement.setString(4, destinationAccount);
-                    statement.setString(5, receiverCurrency);
-                    statement.setString(6, atmSerial);
+                    statement.setInt(3, acc1);
+                    statement.setInt(4, acc2);
+                    statement.setInt(5, currencyId);
+                    statement.setInt(6, atmId);
                     statement.executeUpdate();
                 }
                 //update origin

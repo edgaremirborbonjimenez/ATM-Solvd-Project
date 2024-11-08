@@ -1,0 +1,39 @@
+[ {
+  "serie" : "ATM001",
+  "bills" : [ {
+    "bill" : "$5",
+    "amount" : 100
+  }, {
+    "bill" : "$50",
+    "amount" : 100
+  }, {
+    "bill" : "$2",
+    "amount" : 100
+  }, {
+    "bill" : "$10",
+    "amount" : 100
+  }, {
+    "bill" : "$1",
+    "amount" : 100
+  }, {
+    "bill" : "$20",
+    "amount" : 100
+  }, {
+    "bill" : "$100",
+    "amount" : 100
+  } ],
+  "total_money" : 18800.0,
+  "statistics" : {
+    "average_withdraw" : {
+      "EUR" : 1100.0,
+      "USD" : 225.0
+    },
+    "transaction_counter" : {
+      "total_transactions" : "13"
+    },
+    "largest_withdraw" : {
+      "EUR" : 1100.0,
+      "USD" : 400.0
+    }
+  }
+} ]

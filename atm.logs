@@ -16,3 +16,304 @@
 2024-11-07 22:53:26.713 [main] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - No serializer found for class org.solvd.atm.domain.stadistics.TotalTransactions and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: org.solvd.atm.domain.files.ATMInfo[0]->org.solvd.atm.domain.files.ATMInfo["stadistics"]->org.solvd.atm.domain.files.ATMStadisticsInfo["transaction_counter"])
 2024-11-07 23:12:56.012 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
 
+2024-11-08 01:26:21.811 [pool-2-thread-1] ERROR org.solvd.atm.utils.database.implementations.HikariCPDataSource - Failed to initialize pool: Access denied for user 'root'@'localhost' (using password: NO)
+2024-11-08 01:26:21.813 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "com.zaxxer.hikari.HikariDataSource.getConnection()" because the return value of "org.solvd.atm.utils.database.implementations.HikariCPDataSource.getDataSource()" is null
+2024-11-08 01:26:21.813 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 01:26:41.338 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 01:26:41.369 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Invalid account number or PIN
+2024-11-08 01:26:41.369 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 01:27:00.898 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 01:27:00.929 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "java.util.concurrent.ConcurrentHashMap.get(Object)" because "this.activeAccounts" is null
+2024-11-08 01:27:00.930 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 01:28:02.228 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 01:28:02.258 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.businessObjects.IATMService.findOneATMSerie()" because "this.atmService" is null
+2024-11-08 01:28:02.258 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:08:31.772 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:08:32.158 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+2024-11-08 02:08:32.158 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:09:32.105 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:09:32.461 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+2024-11-08 02:09:32.461 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:10:16.761 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:10:59.827 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+2024-11-08 02:10:59.827 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:11:27.363 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:11:57.051 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+2024-11-08 02:11:57.051 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:12:06.732 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:15:34.314 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:15:55.086 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - null
+2024-11-08 02:15:55.087 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:16:36.353 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:17:09.034 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - null
+2024-11-08 02:17:09.035 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:18:04.931 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:23:35.956 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - null
+2024-11-08 02:23:35.956 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:24:28.818 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:24:47.564 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - null
+2024-11-08 02:24:47.565 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:25:28.536 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:26:06.805 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - null
+2024-11-08 02:26:20.823 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:26:58.910 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:29:11.479 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - null
+2024-11-08 02:29:11.479 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:41:22.899 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:41:41.069 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - null
+2024-11-08 02:41:43.387 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:42:08.464 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:42:08.490 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - null
+2024-11-08 02:42:08.490 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:42:47.520 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:42:47.548 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Invalid account number or PIN
+2024-11-08 02:42:47.548 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:43:10.173 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:46:03.353 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:47:55.104 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:48:56.713 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:49:24.152 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+2024-11-08 02:49:24.152 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:49:46.208 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:50:01.022 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - null
+2024-11-08 02:50:01.023 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:51:48.089 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:52:24.427 [pool-2-thread-1] INFO  org.solvd.atm.implementations.business.BalanceBusiness - Setting session account reference for account: 1234567890
+2024-11-08 02:52:24.437 [pool-2-thread-1] WARN  org.solvd.atm.implementations.business.BalanceBusiness - No currencies found for account: 1234567890
+2024-11-08 02:52:35.971 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "java.util.List.isEmpty()" because "currencyList" is null
+2024-11-08 02:52:35.972 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 02:59:33.963 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 02:59:40.095 [pool-2-thread-1] INFO  org.solvd.atm.implementations.business.BalanceBusiness - Setting session account reference for account: 1234567890
+2024-11-08 02:59:40.098 [pool-2-thread-1] INFO  org.solvd.atm.implementations.business.BalanceBusiness - Retrieved 2 currencies for account: 1234567890
+2024-11-08 03:00:47.349 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - No ATM selected for deposit operation
+2024-11-08 03:00:47.350 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:02:37.889 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:03:38.920 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - No ATM selected for deposit operation
+2024-11-08 03:03:38.921 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:03:48.329 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:05:03.634 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - No ATM selected for deposit operation
+2024-11-08 03:05:03.634 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:05:11.147 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:05:43.361 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - No ATM selected for deposit operation
+2024-11-08 03:05:43.361 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:06:36.668 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:09:07.730 [pool-2-thread-1] ERROR org.solvd.atm.implementations.businessobject.TransactionService - Error generating a transaction between 1234567890 and 1122334455 
+2024-11-08 03:09:07.731 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.TransactionBusiness - Error processing transaction
+2024-11-08 03:09:07.731 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Error processing transaction: Failed to process transaction java.lang.NullPointerException: Cannot invoke "org.solvd.atm.interfaces.data.ITransactionDAO.sendTransaction(String, String, String, String, java.lang.Double, String)" because "this.transactionDAO" is null
+2024-11-08 03:09:07.731 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:10:44.951 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:10:59.214 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.TransactionDAO - Error generating the transaction
+2024-11-08 03:10:59.218 [pool-2-thread-1] ERROR org.solvd.atm.implementations.businessobject.TransactionService - Error generating a transaction between 1234567890 and 1122334455 
+2024-11-08 03:10:59.218 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.TransactionBusiness - Error processing transaction
+2024-11-08 03:10:59.218 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Error processing transaction: Failed to process transaction org.solvd.atm.utils.exceptions.DataException: Failed to generate the transaction java.sql.SQLException: Column count doesn't match value count at row 1
+2024-11-08 03:10:59.218 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:13:21.581 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:13:29.550 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.TransactionDAO - Error generating the transaction
+2024-11-08 03:13:29.555 [pool-2-thread-1] ERROR org.solvd.atm.implementations.businessobject.TransactionService - Error generating a transaction between 1234567890 and 1122334455 
+2024-11-08 03:13:29.555 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.TransactionBusiness - Error processing transaction
+2024-11-08 03:13:29.555 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Error processing transaction: Failed to process transaction org.solvd.atm.utils.exceptions.DataException: Failed to generate the transaction java.sql.SQLException: Column count doesn't match value count at row 1
+2024-11-08 03:13:29.555 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:13:43.715 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:14:01.357 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.TransactionDAO - Error generating the transaction
+2024-11-08 03:14:01.362 [pool-2-thread-1] ERROR org.solvd.atm.implementations.businessobject.TransactionService - Error generating a transaction between 1234567890 and 1122334455 
+2024-11-08 03:14:01.362 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.TransactionBusiness - Error processing transaction
+2024-11-08 03:14:01.362 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Error processing transaction: Failed to process transaction org.solvd.atm.utils.exceptions.DataException: Failed to generate the transaction java.sql.SQLException: Column count doesn't match value count at row 1
+2024-11-08 03:14:01.362 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:14:36.102 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:32:31.833 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:33:18.262 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.TransactionDAO - Error generating the transaction
+2024-11-08 03:33:18.281 [pool-2-thread-1] ERROR org.solvd.atm.implementations.businessobject.TransactionService - Error generating a transaction between 1234567890 and 1122334455 
+2024-11-08 03:33:18.281 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.TransactionBusiness - Error processing transaction
+2024-11-08 03:33:18.281 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Error processing transaction: Failed to process transaction org.solvd.atm.utils.exceptions.DataException: Failed to generate the transaction java.sql.SQLException: No value specified for parameter 1
+2024-11-08 03:33:18.282 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:34:13.853 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:34:53.838 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.TransactionDAO - Error generating the transaction
+2024-11-08 03:34:53.858 [pool-2-thread-1] ERROR org.solvd.atm.implementations.businessobject.TransactionService - Error generating a transaction between 1234567890 and 1122334455 
+2024-11-08 03:34:53.858 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.TransactionBusiness - Error processing transaction
+2024-11-08 03:34:53.858 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Error processing transaction: Failed to process transaction org.solvd.atm.utils.exceptions.DataException: Failed to generate the transaction java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`atm`.`transfers`, CONSTRAINT `transfers_ibfk_2` FOREIGN KEY (`origin_account_id`) REFERENCES `accounts` (`id`))
+2024-11-08 03:34:53.859 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:36:16.168 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:44:31.206 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:44:51.570 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.TransactionDAO - Error generating the transaction
+2024-11-08 03:44:51.574 [pool-2-thread-1] ERROR org.solvd.atm.implementations.businessobject.TransactionService - Error generating a transaction between 1234567890 and 1122334455 
+2024-11-08 03:44:51.574 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.TransactionBusiness - Error processing transaction
+2024-11-08 03:44:51.574 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Error processing transaction: Failed to process transaction org.solvd.atm.utils.exceptions.DataException: Failed to generate the transaction java.sql.SQLException: Operation not allowed after ResultSet closed
+2024-11-08 03:44:51.574 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:45:25.983 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:45:34.213 [pool-2-thread-2] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Account is already in use, pleas try another or try later
+2024-11-08 03:46:44.461 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:46:53.670 [pool-2-thread-2] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Account is already in use, pleas try another or try later
+2024-11-08 03:47:09.189 [pool-2-thread-2] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.businessObjects.IATMInfoService.updateATMBillBySerie(String, org.solvd.atm.domain.atm.ATM)" because "this.atmInfoService" is null
+2024-11-08 03:47:09.189 [pool-2-thread-2] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:48:26.097 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:49:18.716 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.TransactionDAO - Error generating the transaction
+2024-11-08 03:49:18.722 [pool-2-thread-1] ERROR org.solvd.atm.implementations.businessobject.TransactionService - Error generating a transaction between 1234567890 and 1122334455 
+2024-11-08 03:49:18.723 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.TransactionBusiness - Error processing transaction
+2024-11-08 03:49:18.723 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Error processing transaction: Failed to process transaction org.solvd.atm.utils.exceptions.DataException: Failed to generate the transaction java.sql.SQLException: Operation not allowed after ResultSet closed
+2024-11-08 03:49:18.723 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:49:27.339 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:55:18.481 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - class java.util.HashMap cannot be cast to class java.util.EnumMap (java.util.HashMap and java.util.EnumMap are in module java.base of loader 'bootstrap')
+2024-11-08 03:55:22.569 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:56:25.858 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:56:36.530 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - class java.util.HashMap cannot be cast to class java.util.EnumMap (java.util.HashMap and java.util.EnumMap are in module java.base of loader 'bootstrap')
+2024-11-08 03:56:36.530 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:57:08.146 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:57:28.292 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - class java.util.HashMap cannot be cast to class java.util.EnumMap (java.util.HashMap and java.util.EnumMap are in module java.base of loader 'bootstrap')
+2024-11-08 03:57:28.292 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:58:00.203 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:58:58.153 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - class java.util.HashMap cannot be cast to class java.util.EnumMap (java.util.HashMap and java.util.EnumMap are in module java.base of loader 'bootstrap')
+2024-11-08 03:58:58.153 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 03:59:07.076 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 03:59:56.225 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - class java.util.HashMap cannot be cast to class java.util.EnumMap (java.util.HashMap and java.util.EnumMap are in module java.base of loader 'bootstrap')
+2024-11-08 03:59:56.226 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 04:01:45.549 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:02:02.496 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.WithdrawDAO - Error storing withdraw in database - Account: 1234567890, Amount: 100.0, Currency: USD
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'a.number = '1234567890' AND c.name = 'USD' AND x.serie_number = 'ATM001'' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:988) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1166) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1101) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1467) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1084) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61) ~[HikariCP-6.0.0.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java) ~[HikariCP-6.0.0.jar:?]
+	at org.solvd.atm.implementations.data.WithdrawDAO.doWithdraw(WithdrawDAO.java:60) ~[classes/:?]
+	at org.solvd.atm.implementations.businessobject.WithdrawService.doWithdraw(WithdrawService.java:29) ~[classes/:?]
+	at org.solvd.atm.implementations.business.WithdrawBusiness.doWithdraw(WithdrawBusiness.java:96) ~[classes/:?]
+	at org.solvd.atm.implementations.presentation.WithdrawnScreen.showDenomination(WithdrawnScreen.java:54) ~[classes/:?]
+	at org.solvd.atm.implementations.presentation.WithdrawnScreen.enterAmount(WithdrawnScreen.java:40) ~[classes/:?]
+	at org.solvd.atm.implementations.presentation.WithdrawnScreen.selectAccountCurrency(WithdrawnScreen.java:30) ~[classes/:?]
+	at org.solvd.atm.implementations.business.OptionMenuBusiness.showWithraw(OptionMenuBusiness.java:49) ~[classes/:?]
+	at org.solvd.atm.implementations.presentation.OptionMenuScreen.showOptionsMenu(OptionMenuScreen.java:42) ~[classes/:?]
+	at org.solvd.atm.implementations.business.LoginBusiness.loginAccount(LoginBusiness.java:60) ~[classes/:?]
+	at org.solvd.atm.implementations.presentation.LoginScreen.showLogin(LoginScreen.java:23) ~[classes/:?]
+	at org.solvd.atm.implementations.business.LoginBusiness.start(LoginBusiness.java:38) ~[classes/:?]
+	at org.solvd.atm.atmbuilder.products.AtmMachine.run(AtmMachine.java:6) ~[classes/:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.lang.Thread.run(Thread.java:1575) [?:?]
+2024-11-08 04:02:02.521 [pool-2-thread-1] ERROR org.solvd.atm.implementations.businessobject.WithdrawService - Error processing deposit - Account: 1234567890, Amount: 100.0, Currency: USD
+org.solvd.atm.utils.exceptions.DataException: Failed to store withdraw in database java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'a.number = '1234567890' AND c.name = 'USD' AND x.serie_number = 'ATM001'' at line 1
+	at org.solvd.atm.implementations.data.WithdrawDAO.doWithdraw(WithdrawDAO.java:94) ~[classes/:?]
+	at org.solvd.atm.implementations.businessobject.WithdrawService.doWithdraw(WithdrawService.java:29) ~[classes/:?]
+	at org.solvd.atm.implementations.business.WithdrawBusiness.doWithdraw(WithdrawBusiness.java:96) ~[classes/:?]
+	at org.solvd.atm.implementations.presentation.WithdrawnScreen.showDenomination(WithdrawnScreen.java:54) ~[classes/:?]
+	at org.solvd.atm.implementations.presentation.WithdrawnScreen.enterAmount(WithdrawnScreen.java:40) ~[classes/:?]
+	at org.solvd.atm.implementations.presentation.WithdrawnScreen.selectAccountCurrency(WithdrawnScreen.java:30) ~[classes/:?]
+	at org.solvd.atm.implementations.business.OptionMenuBusiness.showWithraw(OptionMenuBusiness.java:49) ~[classes/:?]
+	at org.solvd.atm.implementations.presentation.OptionMenuScreen.showOptionsMenu(OptionMenuScreen.java:42) ~[classes/:?]
+	at org.solvd.atm.implementations.business.LoginBusiness.loginAccount(LoginBusiness.java:60) ~[classes/:?]
+	at org.solvd.atm.implementations.presentation.LoginScreen.showLogin(LoginScreen.java:23) ~[classes/:?]
+	at org.solvd.atm.implementations.business.LoginBusiness.start(LoginBusiness.java:38) ~[classes/:?]
+	at org.solvd.atm.atmbuilder.products.AtmMachine.run(AtmMachine.java:6) ~[classes/:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.lang.Thread.run(Thread.java:1575) [?:?]
+2024-11-08 04:04:00.719 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:16:31.506 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:16:40.515 [main] ERROR org.solvd.atm.implementations.data.WithdrawDAO - Error storing withdraw in database - Account: 1234567890, Amount: 100.0, Currency: USD
+java.sql.SQLException: Statement.executeQuery() cannot issue statements that do not produce result sets.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:81) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:55) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1012) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52) ~[HikariCP-6.0.0.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java) ~[HikariCP-6.0.0.jar:?]
+	at org.solvd.atm.implementations.data.WithdrawDAO.doWithdraw(WithdrawDAO.java:75) [classes/:?]
+	at org.solvd.atm.Main.main(Main.java:11) [classes/:?]
+2024-11-08 04:16:48.419 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:17:18.711 [main] ERROR org.solvd.atm.implementations.data.WithdrawDAO - Error storing withdraw in database - Account: 1234567890, Amount: 100.0, Currency: USD
+java.sql.SQLException: Statement.executeQuery() cannot issue statements that do not produce result sets.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:81) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:55) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1012) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52) ~[HikariCP-6.0.0.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java) ~[HikariCP-6.0.0.jar:?]
+	at org.solvd.atm.implementations.data.WithdrawDAO.doWithdraw(WithdrawDAO.java:75) [classes/:?]
+	at org.solvd.atm.Main.main(Main.java:11) [classes/:?]
+2024-11-08 04:18:03.864 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:19:03.349 [main] ERROR org.solvd.atm.implementations.data.WithdrawDAO - Error storing withdraw in database - Account: 1234567890, Amount: 100.0, Currency: USD
+java.sql.SQLException: Statement.executeQuery() cannot issue statements that do not produce result sets.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:81) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:55) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1012) ~[mysql-connector-j-9.1.0.jar:9.1.0]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52) ~[HikariCP-6.0.0.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java) ~[HikariCP-6.0.0.jar:?]
+	at org.solvd.atm.implementations.data.WithdrawDAO.doWithdraw(WithdrawDAO.java:76) [classes/:?]
+	at org.solvd.atm.Main.main(Main.java:11) [classes/:?]
+2024-11-08 04:19:10.829 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:19:44.262 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:24:34.500 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:24:49.859 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:25:10.651 [main] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:25:51.581 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:26:14.377 [pool-2-thread-1] INFO  org.solvd.atm.implementations.business.WithdrawBusiness - Updated ATM inventory after the extraction
+2024-11-08 04:30:11.896 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:31:04.248 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:32:33.448 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:32:46.746 [pool-2-thread-1] INFO  org.solvd.atm.implementations.business.DepositBusiness - Updated ATM inventory after the deposit
+2024-11-08 04:39:49.659 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:41:03.095 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Index 4 out of bounds for length 2
+2024-11-08 04:41:03.095 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 04:41:29.639 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:41:42.223 [pool-2-thread-1] INFO  org.solvd.atm.implementations.business.DepositBusiness - Updated ATM inventory after the deposit
+2024-11-08 04:43:04.925 [pool-2-thread-1] INFO  org.solvd.atm.implementations.business.WithdrawBusiness - Updated ATM inventory after the extraction
+2024-11-08 04:43:43.927 [pool-2-thread-2] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Account is already in use, pleas try another or try later
+2024-11-08 04:45:37.230 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:45:37.273 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Invalid account number or PIN
+2024-11-08 04:45:37.273 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 04:45:58.382 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:45:58.426 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Invalid account number or PIN
+2024-11-08 04:45:58.426 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 04:46:35.898 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:46:38.075 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Invalid account number or PIN
+2024-11-08 04:46:38.076 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 04:46:59.201 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 04:46:59.244 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Invalid account number or PIN
+2024-11-08 04:46:59.245 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 04:53:29.516 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:04:54.041 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:04:54.085 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Invalid account number or PIN
+2024-11-08 05:04:54.085 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 05:06:17.711 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:08:40.881 [pool-2-thread-2] ERROR org.solvd.atm.implementations.business.LoginBusiness - Cannot invoke "org.solvd.atm.interfaces.businessObjects.IATMInfoService.updateATMBillBySerie(String, org.solvd.atm.domain.atm.ATM)" because "this.atmInfoService" is null
+2024-11-08 05:08:40.882 [pool-2-thread-2] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 05:12:11.234 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:13:26.259 [pool-2-thread-3] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Account is already in use, pleas try another or try later
+2024-11-08 05:14:30.691 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:16:39.414 [pool-2-thread-3] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Account is already in use, pleas try another or try later
+2024-11-08 05:25:09.055 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:27:34.622 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:29:16.366 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:29:16.392 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Invalid account number or PIN
+2024-11-08 05:29:16.392 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 05:29:25.622 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - Error: there are no ATMs to update
+2024-11-08 05:29:25.622 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - Error: there are no ATMs to update
+2024-11-08 05:30:22.975 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:30:23.021 [pool-2-thread-1] ERROR org.solvd.atm.implementations.business.LoginBusiness - Invalid account number or PIN
+2024-11-08 05:30:23.021 [pool-2-thread-1] ERROR org.solvd.atm.implementations.presentation.LoginScreen - Invalid credentials.
+2024-11-08 05:31:33.537 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - Error: there are no ATMs to update
+2024-11-08 05:31:33.537 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - Error: there are no ATMs to update
+2024-11-08 05:33:13.634 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:33:15.847 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - Error: there are no ATMs to update
+2024-11-08 05:33:15.848 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - Error: there are no ATMs to update
+2024-11-08 05:34:10.019 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:34:42.591 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:34:50.991 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - Error: there are no ATMs to update
+2024-11-08 05:34:50.992 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - Error: there are no ATMs to update
+2024-11-08 05:36:57.956 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:38:45.579 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:40:02.947 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created
+2024-11-08 05:41:22.813 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - Error: there are no ATMs to update
+2024-11-08 05:41:22.814 [pool-2-thread-1] ERROR org.solvd.atm.implementations.data.ATMInfoDAO - Error: there are no ATMs to update
+2024-11-08 05:41:34.686 [pool-2-thread-1] INFO  org.solvd.atm.utils.database.implementations.HikariCPDataSource - Connection Created

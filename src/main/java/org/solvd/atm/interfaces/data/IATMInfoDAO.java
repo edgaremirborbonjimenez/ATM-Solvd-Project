@@ -8,5 +8,9 @@ public interface IATMInfoDAO {
     void updateATMBillsBySerie(String atmSerie, ATM atm);
     void updateATMStadisticsBySerie(String atmSerie);
     ATMInfo findATMBySerie(String atmSerie);
+    ATMInfo FinalfindATMBySerie(String atmSerie);
+    ATMInfo FinalcreateNewATM(String atmSerie);
+    void FinalupdateATMBillsBySerie(String atmSerie, ATM atm);
+    void FinalupdateATMStadisticsBySerie(String atmSerie);
 
 }

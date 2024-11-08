@@ -21,6 +21,7 @@ public class TransactionService implements ITransactionService {
     private ICurrencyService currencyService;
     private ITransactionDAO transactionDAO;
 
+
     public void setTransactionDAO(ITransactionDAO transactionDAO) {
         this.transactionDAO = transactionDAO;
     }

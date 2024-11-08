@@ -112,6 +112,7 @@ public class ATMInfoDAO implements IATMInfoDAO {
             atmList.forEach(a-> {
                 if(a.getSerie().equalsIgnoreCase(atmSerie)){
                     a = updateMoney(a,atm);
+                    a.setTotalMoney(calculateTotalAmount(atm.getMoney()));
                 }
             });
 
@@ -121,6 +122,20 @@ public class ATMInfoDAO implements IATMInfoDAO {
             logger.error(e.getMessage());
             throw new DataException("Something went wrong");
         }
+    }
+
+    public static double calculateTotalAmount(Map<DollarDenomination, Integer> money) {
+        int total = 0;
+
+        if (money != null) {
+            for (Map.Entry<DollarDenomination, Integer> entry : money.entrySet()) {
+                DollarDenomination denomination = entry.getKey();
+                int count = entry.getValue();
+                total += denomination.getValue() * count;
+            }
+        }
+
+        return total;
     }
 
     private ATMInfo updateMoney(ATMInfo atmInfo,ATM atm){
@@ -217,6 +232,139 @@ public class ATMInfoDAO implements IATMInfoDAO {
         }catch(Exception e){
             logger.error(e.getMessage());
             throw new DataException("Something went wrong");
+        }
+    }
+
+    @Override
+    public ATMInfo FinalfindATMBySerie(String atmSerie) {
+        try{
+            FileInputStream file = new FileInputStream(dataSourceAfter);
+            ATMInfo[] atmInfo;
+            if(file.available()==0){
+                return null;
+            }
+            atmInfo = this.objectMapper.readValue(file,ATMInfo[].class);
+            List<ATMInfo> list = new LinkedList<>(Arrays.stream(atmInfo).filter(a->a.getSerie().equalsIgnoreCase(atmSerie)).toList());
+            if(list.isEmpty()){
+                return null;
+            }
+            return list.getFirst();
+        }catch(Exception e){
+            logger.error(e.getMessage());
+            throw new DataException("Something went wrong");
+        }
+    }
+
+    @Override
+    public ATMInfo FinalcreateNewATM(String atmSerie) {
+        try{
+            FileInputStream file = new FileInputStream(dataSourceAfter);
+            ATMInfo[] atmInfo;
+            if(file.available()!=0){
+                atmInfo = this.objectMapper.readValue(file,ATMInfo[].class);
+            }else{
+                atmInfo = new ATMInfo[0];
+            }
+
+            List<ATMInfo> atmList = new LinkedList<>(Arrays.stream(atmInfo).toList());
+            ATMInfo newATM = initATM(atmSerie);
+            atmList.add(newATM);
+            ATMInfo[] arr = atmList.toArray(new ATMInfo[0]);
+            objectMapper.writeValue(new File(dataSourceAfter),arr);
+            return newATM;
+        }catch(Exception e){
+            logger.error(e.getMessage());
+            throw new DataException("Something went wrong");
+        }
+    }
+
+    @Override
+    public void FinalupdateATMBillsBySerie(String atmSerie, ATM atm) {
+        try{
+            FileInputStream file = new FileInputStream(dataSourceAfter);
+            ATMInfo[] atmInfo;
+            if(file.available()==0){
+                logger.error("Error: there are no ATMs to update");
+                return;
+            }
+            atmInfo = this.objectMapper.readValue(file,ATMInfo[].class);
+            List<ATMInfo> atmList = new LinkedList<>(Arrays.stream(atmInfo).toList());
+
+            atmList.forEach(a-> {
+                if(a.getSerie().equalsIgnoreCase(atmSerie)){
+                    a = updateMoney(a,atm);
+                    a.setTotalMoney(calculateTotalAmount(atm.getMoney()));
+                }
+            });
+
+            ATMInfo[] arr = atmList.toArray(new ATMInfo[0]);
+            objectMapper.writeValue(new File(dataSourceAfter),arr);
+        }catch(Exception e){
+            logger.error(e.getMessage());
+            throw new DataException("Something went wrong");
+        }
+    }
+
+    @Override
+    public void FinalupdateATMStadisticsBySerie(String atmSerie) {
+        try{
+            FileInputStream file = new FileInputStream(dataSourceAfter);
+            ATMInfo[] atmInfos;
+            if(file.available()==0){
+                logger.error("Error: there are no ATMs to update");
+                return;
+            }
+            atmInfos = this.objectMapper.readValue(file,ATMInfo[].class);
+            List<ATMInfo> atmList = new LinkedList<>(Arrays.stream(atmInfos).toList());
+            if(atmList.isEmpty()){
+                logger.error("Error: there are no ATMs to update");
+                return;
+            }
+
+            try(Connection connection = dataSource.getDataSource().getConnection();
+                PreparedStatement statementAverageWithdraws = connection.prepareStatement(AVERAGE_WITHDRAWS_BY_ATM_SERIE);
+                PreparedStatement statementTotalTransacions = connection.prepareStatement(TOTAL_TRANSACTIONS_BY_ATM_SERIE);
+                PreparedStatement statementLargestWithdraw = connection.prepareStatement(LARGEST_WITHDRAW_BY_ATM_SERIE)) {
+
+                statementAverageWithdraws.setString(1, atmSerie);
+                statementTotalTransacions.setString(1, atmSerie);
+                statementLargestWithdraw.setString(1, atmSerie);
+
+                try (ResultSet rAverageWithdraws = statementAverageWithdraws.executeQuery();
+                     ResultSet rTotalTransacions = statementTotalTransacions.executeQuery();
+                     ResultSet rLargestWithdraw = statementLargestWithdraw.executeQuery()) {
+
+                    AverageWithdraw averageWithdraw = new AverageWithdraw();
+                    LargestWithdraw largestWithdraw = new LargestWithdraw();
+                    TotalTransactions transactions = new TotalTransactions();
+
+                    while (rAverageWithdraws.next()) {
+                        averageWithdraw.put(rAverageWithdraws.getString("currency_name"), rAverageWithdraws.getDouble("average_withdrawn"));
+                    }
+                    if (rTotalTransacions.next()) {
+                        transactions.setTotalTransactions(rTotalTransacions.getString("total_transactions"));
+                    }
+                    while (rLargestWithdraw.next()) {
+                        largestWithdraw.put(rLargestWithdraw.getString("currency_name"), rLargestWithdraw.getDouble("largest_withdrawn"));
+                    }
+                    ATMStadisticsInfo atmStadisticsInfo  = new ATMStadisticsInfo();
+                    atmStadisticsInfo.setAverageWithdraw(averageWithdraw);
+                    atmStadisticsInfo.setLargestWithdraw(largestWithdraw);
+                    atmStadisticsInfo.setTransactionCounter(transactions);
+
+                    atmList.forEach(a -> {
+                        if(a.getSerie().equalsIgnoreCase(atmSerie)){
+                            a.setStadistics(atmStadisticsInfo);
+                        }
+                    });
+                    ATMInfo[] arr = atmList.toArray(new ATMInfo[0]);
+                    objectMapper.writeValue(new File(dataSourceAfter),arr);
+                }
+
+            }
+        }catch (SQLException | IOException e){
+            logger.error(e.getMessage());
+            throw new DataException(e.getMessage());
         }
     }
 }

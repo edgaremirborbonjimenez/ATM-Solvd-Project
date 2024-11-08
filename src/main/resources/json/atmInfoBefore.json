@@ -1,41 +1,39 @@
 [ {
   "serie" : "ATM001",
   "bills" : [ {
-    "bill" : "$1",
-    "amount" : 100
-  }, {
-    "bill" : "$2",
-    "amount" : 100
-  }, {
     "bill" : "$5",
-    "amount" : 100
-  }, {
-    "bill" : "$10",
-    "amount" : 100
-  }, {
-    "bill" : "$20",
     "amount" : 100
   }, {
     "bill" : "$50",
     "amount" : 100
   }, {
+    "bill" : "$2",
+    "amount" : 100
+  }, {
+    "bill" : "$10",
+    "amount" : 100
+  }, {
+    "bill" : "$1",
+    "amount" : 100
+  }, {
+    "bill" : "$20",
+    "amount" : 100
+  }, {
     "bill" : "$100",
     "amount" : 100
   } ],
-  "total_money" : 700.0,
+  "total_money" : 18800.0,
   "statistics" : {
     "average_withdraw" : {
-      "JPY" : 300.0,
-      "EUR" : 50.0,
-      "USD" : 150.0
+      "EUR" : 1100.0,
+      "USD" : 225.0
     },
     "transaction_counter" : {
-      "total_transactions" : "10"
+      "total_transactions" : "13"
     },
     "largest_withdraw" : {
-      "JPY" : 300.0,
-      "EUR" : 50.0,
-      "USD" : 200.0
+      "EUR" : 1100.0,
+      "USD" : 400.0
     }
   }
 } ]

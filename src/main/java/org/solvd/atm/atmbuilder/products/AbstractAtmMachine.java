@@ -28,18 +28,23 @@ public abstract class AbstractAtmMachine implements Runnable{
 
     //Services (Businesses Objects)
     protected IAccountService accountService;
-    protected  ICurrencyService currencyService;
+    protected IATMInfoService atmInfoService;
+    protected IATMService atmService;
+    protected ISessionInfoService sessionInfoService;
+    protected ICurrencyService currencyService;
     protected ITransactionService transactionService;
     protected IWithdrawService withdrawService;
     protected IDepositService depositService;
 
     //DAOs
     protected IAccountDAO accountDAO;
+    protected IATMDAO atmdao;
+    protected IATMInfoDAO atmInfoDAO;
     protected ICurrencyDAO currencyDAO;
     protected ITransactionDAO transactionDAO;
     protected IWithdrawDAO withdrawDAO;
     protected IDepositDAO depositDAO;
-
+    protected ISessionInfoDAO sessionInfoDAO;
 
     public synchronized void pauseExecution(){
         try{
@@ -141,5 +146,29 @@ public abstract class AbstractAtmMachine implements Runnable{
 
     public void setDepositDAO(IDepositDAO depositDAO) {
         this.depositDAO = depositDAO;
+    }
+
+    public void setAtmInfoService(IATMInfoService atmInfoService) {
+        this.atmInfoService = atmInfoService;
+    }
+
+    public void setAtmService(IATMService atmService) {
+        this.atmService = atmService;
+    }
+
+    public void setSessionInfoService(ISessionInfoService sessionInfoService) {
+        this.sessionInfoService = sessionInfoService;
+    }
+
+    public void setAtmdao(IATMDAO atmdao) {
+        this.atmdao = atmdao;
+    }
+
+    public void setAtmInfoDAO(IATMInfoDAO atmInfoDAO) {
+        this.atmInfoDAO = atmInfoDAO;
+    }
+
+    public void setSessionInfoDAO(ISessionInfoDAO sessionInfoDAO) {
+        this.sessionInfoDAO = sessionInfoDAO;
     }
 }

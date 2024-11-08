@@ -1,6 +1,7 @@
 package org.solvd.atm.interfaces.presentation;
 
 import org.solvd.atm.dtos.DepositDTO;
+import org.solvd.atm.interfaces.business.IDepositBusiness;
 
 public interface IDepositScreen {
     void enterAmountToDeposit();
@@ -8,4 +9,5 @@ public interface IDepositScreen {
     void selectAccountCurrencyToDeposit();
     void showSuccess(DepositDTO depositDTO);
     void showErroMessage(String err);
+    void setDepositBusiness(IDepositBusiness depositBusiness);
 }

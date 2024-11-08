@@ -2,57 +2,19 @@
   "last_index" : 4,
   "sessions" : [ {
     "id" : 1,
-    "transactions" : [ {
-      "type" : "transfer",
-      "referenceNumber" : "987987",
-      "origin" : "987987564",
-      "amount" : 1000.0,
-      "currency" : "USA",
-      "destination" : "987987564"
-    }, {
-      "type" : "deposit",
-      "referenceNumber" : "1546156",
-      "origin" : "987987564",
-      "amount" : 800.0,
-      "currency" : "MXN"
-    }, {
-      "type" : "withdraw",
-      "referenceNumber" : "1546156",
-      "origin" : "987987564",
-      "amount" : 900.0,
-      "currency" : "MXN"
-    } ],
-    "atm_serie" : "ATM01"
+    "transactions" : [ ],
+    "atm_serie" : "ATM001"
   }, {
     "id" : 2,
-    "transactions" : [ {
-      "type" : "withdraw",
-      "referenceNumber" : "1546156",
-      "origin" : "987987564",
-      "amount" : 900.0,
-      "currency" : "MXN"
-    } ],
-    "atm_serie" : "ATM02"
+    "transactions" : [ ],
+    "atm_serie" : "ATM001"
   }, {
     "id" : 3,
-    "transactions" : [ {
-      "type" : "deposit",
-      "referenceNumber" : "1546156",
-      "origin" : "987987564",
-      "amount" : 800.0,
-      "currency" : "MXN"
-    } ],
-    "atm_serie" : "ATM02"
+    "transactions" : [ ],
+    "atm_serie" : "ATM001"
   }, {
     "id" : 4,
-    "transactions" : [ {
-      "type" : "transfer",
-      "referenceNumber" : "987987",
-      "origin" : "987987564",
-      "amount" : 1000.0,
-      "currency" : "USA",
-      "destination" : "987987564"
-    } ],
-    "atm_serie" : "ATM02"
+    "transactions" : [ ],
+    "atm_serie" : "ATM001"
   } ]
 }
