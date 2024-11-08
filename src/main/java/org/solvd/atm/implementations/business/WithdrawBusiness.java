@@ -3,12 +3,19 @@ package org.solvd.atm.implementations.business;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solvd.atm.domain.atm.ATM;
+import org.solvd.atm.domain.files.SessionInfo;
 import org.solvd.atm.dtos.AccountDTO;
 import org.solvd.atm.dtos.CurrencyDTO;
 import org.solvd.atm.dtos.WithdrawDTO;
+import org.solvd.atm.interfaces.business.IOptionsMenuBusiness;
 import org.solvd.atm.interfaces.business.IWithdrawBusiness;
+import org.solvd.atm.interfaces.businessObjects.IATMInfoService;
 import org.solvd.atm.interfaces.businessObjects.ICurrencyService;
+import org.solvd.atm.interfaces.businessObjects.ISessionInfoService;
 import org.solvd.atm.interfaces.businessObjects.IWithdrawService;
+import org.solvd.atm.interfaces.presentation.ITransactionScreen;
+import org.solvd.atm.interfaces.presentation.IWithdrawScreen;
+import org.solvd.atm.sessionmanager.SessionManager;
 import org.solvd.atm.utils.Denominator;
 import org.solvd.atm.utils.DollarDenomination;
 import org.solvd.atm.utils.exceptions.BusinessException;
@@ -24,14 +31,10 @@ public class WithdrawBusiness implements IWithdrawBusiness {
     private ICurrencyService currencyService;
     private AccountDTO sessionAccount;
     private ATM atm;
-
-    public void setCurrencyService(ICurrencyService currencyService) {
-        this.currencyService = currencyService;
-    }
-
-    public void setWithdrawService(IWithdrawService withdrawService) {
-        this.withdrawService = withdrawService;
-    }
+    IWithdrawScreen withdrawScreen;
+    IOptionsMenuBusiness optionsMenuBusiness;
+    ISessionInfoService sessionInfoService;
+    IATMInfoService atmInfoService;
 
     @Override
     public List<CurrencyDTO> getCurrenciesByAccount() {
@@ -89,7 +92,13 @@ public class WithdrawBusiness implements IWithdrawBusiness {
         if (withdraw != null){
             updateATMInventory(denomination);
         }
+        this.sessionInfoService.addWithdrawToSessionBySessionId(
+                SessionManager.getInstance().getSessionId(this.sessionAccount.getNumber()),
+                withdraw,
+                currency,amountInOriginalCurrency);
 
+        this.optionsMenuBusiness.setATM(this.atm);
+        this.atmInfoService.updateATMBillBySerie(this.atm.getSerieNumber(),this.atm);
         return withdraw;
     }
 
@@ -172,4 +181,36 @@ public class WithdrawBusiness implements IWithdrawBusiness {
                 .sum();
     }
 
+    public void setCurrencyService(ICurrencyService currencyService) {
+        this.currencyService = currencyService;
+    }
+
+    public void setWithdrawService(IWithdrawService withdrawService) {
+        this.withdrawService = withdrawService;
+    }
+
+    public void setWithdrawScreen(IWithdrawScreen withdrawScreen) {
+        this.withdrawScreen = withdrawScreen;
+    }
+
+    public void setAtm(ATM atm) {
+        this.atm = atm;
+    }
+
+    public void setSessionAccount(AccountDTO sessionAccount) {
+        this.sessionAccount = sessionAccount;
+    }
+
+    @Override
+    public void setOptionsMenuBusiness(IOptionsMenuBusiness optionsMenuBusiness) {
+        this.optionsMenuBusiness = optionsMenuBusiness;
+    }
+
+    public void setSessionInfoService(ISessionInfoService sessionInfoService) {
+        this.sessionInfoService = sessionInfoService;
+    }
+
+    public void setAtmInfoService(IATMInfoService atmInfoService) {
+        this.atmInfoService = atmInfoService;
+    }
 }

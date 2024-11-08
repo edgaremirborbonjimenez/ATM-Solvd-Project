@@ -16,7 +16,7 @@ public class ATMInfoService implements IATMInfoService {
 
     public ATMInfoService(){}
     @Override
-    public ATM createNewATM(String atmSerie, String accountNumber) {
+    public ATM createNewATM(String atmSerie) {
         ATMInfo atmInfo = atmInfoDAO.createNewATM(atmSerie);
         ATM atm = new ATM();
         atm.setSerieNumber(atmInfo.getSerie());

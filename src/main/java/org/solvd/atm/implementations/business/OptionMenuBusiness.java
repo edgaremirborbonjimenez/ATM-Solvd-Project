@@ -69,10 +69,31 @@ public class OptionMenuBusiness implements IOptionsMenuBusiness {
         this.balanceScreen = balanceScreen;
     }
 
-    public void setTransactionBusiness(TransactionBusiness transactionBusiness){
+    public void setAccountReference(AccountDTO account) {
+        this.account = account;
+    }
+
+    public void setDepositBusiness(IDepositBusiness depositBusiness) {
+        this.depositBusiness = depositBusiness;
+    }
+
+    public void setDepositScreen(IDepositScreen depositScreen) {
+        this.depositScreen = depositScreen;
+    }
+
+    public void setTransactionBusiness(ITransactionBusiness transactionBusiness) {
         this.transactionBusiness = transactionBusiness;
     }
-    public void setTransactionScreen(TransactionScreen transactionScreen){
+
+    public void setTransactionScreen(ITransactionScreen transactionScreen) {
         this.transactionScreen = transactionScreen;
+    }
+
+    public void setWithdrawBusiness(IWithdrawBusiness withdrawBusiness) {
+        this.withdrawBusiness = withdrawBusiness;
+    }
+
+    public void setWithdrawScreen(IWithdrawScreen withdrawScreen) {
+        this.withdrawScreen = withdrawScreen;
     }
 }

@@ -7,8 +7,13 @@ import org.solvd.atm.dtos.AccountDTO;
 import org.solvd.atm.dtos.CurrencyDTO;
 import org.solvd.atm.dtos.DepositDTO;
 import org.solvd.atm.interfaces.business.IDepositBusiness;
+import org.solvd.atm.interfaces.business.IOptionsMenuBusiness;
+import org.solvd.atm.interfaces.businessObjects.IATMInfoService;
 import org.solvd.atm.interfaces.businessObjects.ICurrencyService;
 import org.solvd.atm.interfaces.businessObjects.IDepositService;
+import org.solvd.atm.interfaces.businessObjects.ISessionInfoService;
+import org.solvd.atm.interfaces.presentation.IDepositScreen;
+import org.solvd.atm.sessionmanager.SessionManager;
 import org.solvd.atm.utils.DollarDenomination;
 import org.solvd.atm.utils.exceptions.BusinessException;
 
@@ -22,15 +27,10 @@ public class DepositBusiness implements IDepositBusiness {
     private ICurrencyService currencyService;
     private AccountDTO accountSession;
     private ATM atm;
-
-
-    public void setDepositService(IDepositService depositService){
-        this.depositService = depositService;
-    }
-
-    public void setCurrencyService(ICurrencyService currencyService) {
-        this.currencyService = currencyService;
-    }
+    ISessionInfoService sessionInfoService;
+    IDepositScreen depositScreen;
+    IOptionsMenuBusiness optionsMenuBusiness;
+    IATMInfoService atmInfoService;
 
     @Override
     public List<CurrencyDTO> getAccountCurrencies() {
@@ -63,6 +63,13 @@ public class DepositBusiness implements IDepositBusiness {
             if(depositDTO != null){
                 updateATMInventory(denomination);
             }
+            this.sessionInfoService.addDepositToSessionBySessionId(
+                    SessionManager.getInstance().getSessionId(this.accountSession.getNumber()),
+                    depositDTO,
+                    currency,
+                    convertedAmount);
+            this.optionsMenuBusiness.setATM(this.atm);
+            this.atmInfoService.updateATMBillBySerie(this.atm.getSerieNumber(),this.atm);
             return depositDTO;
 
         } catch (Exception e) {
@@ -145,5 +152,37 @@ public class DepositBusiness implements IDepositBusiness {
         });
 
         logger.info("Updated ATM inventory after the deposit");
+    }
+
+    public void setDepositService(IDepositService depositService){
+        this.depositService = depositService;
+    }
+
+    public void setCurrencyService(ICurrencyService currencyService) {
+        this.currencyService = currencyService;
+    }
+
+    public void setSessionInfoService(ISessionInfoService sessionInfoService) {
+        this.sessionInfoService = sessionInfoService;
+    }
+
+    public void setAccountSession(AccountDTO accountSession) {
+        this.accountSession = accountSession;
+    }
+
+    public void setAtm(ATM atm) {
+        this.atm = atm;
+    }
+
+    public void setDepositScreen(IDepositScreen depositScreen) {
+        this.depositScreen = depositScreen;
+    }
+
+    public void setOptionsMenuBusiness(IOptionsMenuBusiness optionsMenuBusiness) {
+        this.optionsMenuBusiness = optionsMenuBusiness;
+    }
+
+    public void setAtmInfoService(IATMInfoService atmInfoService) {
+        this.atmInfoService = atmInfoService;
     }
 }

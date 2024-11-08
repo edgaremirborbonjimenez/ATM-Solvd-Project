@@ -91,4 +91,9 @@ public class TransactionScreen implements ITransactionScreen {
     public void showErrorMessage(String err) {
         System.out.println(err);
     }
+
+    public void setTransactionBusiness(ITransactionBusiness transactionBusiness) {
+        this.transactionBusiness = transactionBusiness;
+    }
+
 }
